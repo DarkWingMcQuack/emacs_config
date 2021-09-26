@@ -2,16 +2,6 @@
 
 (global-prettify-symbols-mode 1)
 
-(add-hook
- 'c-mode-common-hook
- (lambda ()
-   (mapc (lambda (pair) (push pair prettify-symbols-alist))
-         '(("->"    .   "⇾")
-           ("nullptr" .    "∅")
-           ("std::nullopt" .    "∅")
-           ("NULL"  .   "∅")
-           ("null"  .   "∅")))))
-
 ;; pretiffy c++ range based for loops
 (defvar pretty-for-rgx
   (rx

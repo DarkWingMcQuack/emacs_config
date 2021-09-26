@@ -30,8 +30,7 @@
   :hook
   (company-mode . company-box-mode))
 
-;; enable fuzzy matching
-(use-package company-flx
+(use-package company-statistics
   :after company
-  :config
-  (company-flx-mode 1))
+  :hook
+  (company-mode . company-statistics-mode))

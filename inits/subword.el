@@ -1,3 +1,3 @@
 (use-package subword
-  ;;:straight (:type built-in)
+  :straight (:type built-in)
   :config (global-subword-mode))

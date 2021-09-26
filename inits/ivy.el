@@ -1,8 +1,15 @@
+(use-package flx)
+
 (use-package ivy
   :config
-  (ivy-mode)
   (setq ivy-re-builders-alist
 		'((t . ivy--regex-fuzzy))) 
+  (ivy-mode)
+
+  :after flx
+
+  :custom
+  (ivy-initial-inputs-alist nil)
 
   :general
   (general-define-key
