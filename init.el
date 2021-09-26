@@ -79,6 +79,7 @@
 (load (local-file-name "inits/org"))
 (load (local-file-name "inits/keybindings"))
 (load (local-file-name "inits/subword"))
+(load (local-file-name "inits/hl-todo"))
 
 
 ;;custom.el bullshit
@@ -88,3 +89,4 @@
 
 ;;; init.el ends here
 (put 'dired-find-alternate-file 'disabled nil)
+(put 'downcase-region 'disabled nil)
