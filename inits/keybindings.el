@@ -4,7 +4,8 @@
 
 (general-define-key
  :states 'normal
- "g l" 'goto-line)
+ "g l" '(goto-line :wk "goto line")
+ "q"   '(delete-window :wk "delete current window"))
 
 (my-leader
   "b" '(:ignore t :wk "buffers")
@@ -23,7 +24,8 @@
 	  (split-window-below -15)
 	  (other-window -1)
 	  (term "/bin/fish")
-	  (evil-normal-state))))
+	  (evil-normal-state)
+	  (move-end-of-line nil))))
 
 (defun my-format-buffer ()
   (interactive)
