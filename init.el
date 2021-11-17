@@ -52,7 +52,7 @@
 
 ;;load the rest
 (load (local-file-name "inits/ui-config"))
-(load (local-file-name "inits/indent-guide"))
+;; (load (local-file-name "inits/indent-guide"))
 (load (local-file-name "inits/linum"))
 (load (local-file-name "inits/drag-stuff"))
 (load (local-file-name "inits/hideshow"))
