@@ -46,8 +46,8 @@
   (lsp-mode . lsp-lens-mode)
   (lsp-mode . lsp-signature-mode)
   ;; only format-on-save if lsp-mode is active
-  (lsp-mode . (lambda ()
-				(add-hook 'before-save-hook 'lsp-format-buffer nil 'make-it-local)))
+  ;; (lsp-mode . (lambda ()
+  ;; 				(add-hook 'before-save-hook 'lsp-format-buffer nil 'make-it-local)))
 
 
   :general
@@ -55,7 +55,8 @@
 	:states 'normal
 	"TAB" '(lsp-format-buffer :wk "format buffer")
 	"s d" '(lsp-describe-thing-at-point :wk "show documentation")
-	"s r" '(lsp-find-references :wk "show documentation")
+	"x r" '(xref-find-references :wk "xref find references")
+	"x a" '(xref-find-apropos :wk "xref find apropos")
 	"d"   '(lsp-ui-doc-glance :wk "peek documentation"))
 
   (general-define-key
@@ -83,10 +84,6 @@
 ;; Add metals backend for lsp-mode
 ;; for scala
 (use-package lsp-metals)
-
-(use-package posframe
-  ;; Posframe is a pop-up tool that must be manually installed for dap-mode
-  )
 
 (use-package dap-mode
   :hook
