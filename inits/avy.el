@@ -5,9 +5,9 @@
 
   :general
 
-  (general-define-key
-   :states 'normal
-   "q" 'avy-goto-char-timer)
+  ;; (general-define-key
+  ;;  :states 'normal
+  ;;  "q" 'avy-goto-char-timer)
 
   (my-leader 
 	:states 'normal
