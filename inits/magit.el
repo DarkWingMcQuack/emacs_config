@@ -34,6 +34,3 @@
 
 (use-package forge
   :after magit)
-
-(use-package gitignore-mode
-  :mode ("/\\.gitignore\\'"))
