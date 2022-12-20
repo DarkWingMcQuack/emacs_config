@@ -6,7 +6,7 @@
   :commands (vr/replace vr/query-replace)
   :after visual-regexp
   :custom
-  (vr/engine 'pcre2el "Use PCRE regular expressions")
+  (vr/engine 'python "Use python regular expressions")
   :general
   (my-leader
 	:states 'normal

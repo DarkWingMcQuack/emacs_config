@@ -23,7 +23,7 @@
 	(progn
 	  (split-window-below -15)
 	  (other-window -1)
-	  (term "/bin/fish")
+	  (term "/bin/bash")
 	  (evil-normal-state)
 	  (move-end-of-line nil))))
 
@@ -52,7 +52,7 @@
   "b b" '(crux-switch-to-previous-buffer :wk "switch to last buffer")
   "b x" '(eval-buffer :wk "execute elisp buffer")
   "b f" '(switch-to-buffer :wk "find buffer")
-  "b d" '(kill-this-buffer :wk "kill current buffer")
+  "b d" '(evil-delete-buffer :wk "kill current buffer")
   "b q" '(crux-kill-other-buffers :wk "kill other buffers")
 
   "f s" '(save-buffer :wk "save current buffer")

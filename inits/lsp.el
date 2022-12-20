@@ -6,12 +6,13 @@
   (lsp-print-io nil)
   (lsp-trace nil)
   (lsp-print-performance nil)
-  (lsp-completion-provider :capf)
+  (lsp-completion-provider :none)
 
-  (company-lsp-cache-candidates t) ;; auto, t(always using a cache), or nil
-  (company-lsp-async t)
+  (lsp-ui-doc-enable nil)
+  (lsp-lens-enable t)
+  (lsp-ui-sideline-show-code-actions t)
+
   (company-lsp-enable-snippet t)
-  (company-lsp-enable-recompletion t)
 
   (lsp-auto-guess-root t)
   (lsp-enable-snippet t)
@@ -21,6 +22,7 @@
   (lsp-signature-auto-activate t)
   (lsp-signature-render-documentation t)
   (lsp-enable-text-document-color t)
+  (lsp-enable-indentation t)
 
   (lsp-semantic-tokens-enable nil)
   (lsp-headerline-breadcrumb-enable nil)
@@ -28,14 +30,6 @@
 
   (lsp-signature-function 'lsp-signature-posframe)
 
-
-  (lsp-clients-clangd-args
-   '("-j=4"
-	 "--background-index"
-	 "-log=error"
-	 "--completion-style=detailed"
-	 "--header-insertion=never"
-	 "--clang-tidy"))
   :hook
   (go-mode . lsp)
   (python-mode . lsp)
@@ -45,9 +39,6 @@
   (scala-mode . lsp)
   (lsp-mode . lsp-lens-mode)
   (lsp-mode . lsp-signature-mode)
-  ;; only format-on-save if lsp-mode is active
-  ;; (lsp-mode . (lambda ()
-  ;; 				(add-hook 'before-save-hook 'lsp-format-buffer nil 'make-it-local)))
 
 
   :general
@@ -64,6 +55,11 @@
    :states 'normal
    "c w" '(lsp-execute-code-action :wk "code action")
    "g d" '(lsp-find-definition :wk "goto definition")))
+
+
+(use-package lsp-pyright
+  :after lsp-mode
+  :hook (python-mode . lsp))
 
 
 (use-package lsp-ui

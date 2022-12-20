@@ -36,6 +36,5 @@
    (mapc (lambda (pair) (push pair prettify-symbols-alist))
          '(("and"  .     "∧")
            ("or"  .      "∨")
-           ("None"  .    "∅")
            ("in" .       #x2208)
            ("not in" .   #x2209)))))

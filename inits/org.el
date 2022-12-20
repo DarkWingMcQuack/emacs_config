@@ -23,7 +23,6 @@
   (org-fontify-done-headline t)
   (org-fontify-quote-and-verse-blocks t)
   :general
-
   (general-define-key
    :keymaps 'org-mode-map
    :states 'normal
@@ -47,7 +46,7 @@
   :straight (:type built-in)
   :custom
   (org-agenda-files (directory-files-recursively
-					 "~/Nextcloud/notes/"
+					 "~/Nextcloud/"
 					 "\.org$"))
 
   ;; Tasks mit Datum in der Agenda ausblenden, wenn sie bereits erledigt sind:

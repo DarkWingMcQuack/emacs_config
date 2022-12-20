@@ -9,6 +9,14 @@
 
 
 ;;; Code:
+(defconst dd/using-native-comp (and
+								(fboundp 'native-comp-available-p)
+                                (native-comp-available-p)))
+(setq native-comp-deferred-compilation t)
+(setq native-comp-async-query-on-exit t)
+(setq native-comp-async-jobs-number 4)
+(setq native-comp-async-report-warnings-errors nil)
+
 
 
 (defvar local-dir user-emacs-directory
@@ -59,9 +67,13 @@
 (load (local-file-name "inits/which-key"))
 (load (local-file-name "inits/flycheck"))
 (load (local-file-name "inits/flyspell"))
-(load (local-file-name "inits/yasnippet"))
+(load (local-file-name "inits/snippets"))
+
+
 (load (local-file-name "inits/company"))
+;; (load (local-file-name "inits/completion"))
 (load (local-file-name "inits/projectile"))
+(load (local-file-name "inits/cpp"))
 (load (local-file-name "inits/magit"))
 (load (local-file-name "inits/elisp"))
 (load (local-file-name "inits/haskell"))
@@ -80,6 +92,9 @@
 (load (local-file-name "inits/keybindings"))
 (load (local-file-name "inits/subword"))
 (load (local-file-name "inits/hl-todo"))
+(load (local-file-name "inits/ebnf"))
+(load (local-file-name "inits/ws-cleanup"))
+(load (local-file-name "inits/unicode"))
 
 
 ;;custom.el bullshit

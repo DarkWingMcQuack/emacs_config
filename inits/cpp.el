@@ -1,3 +1,5 @@
-;; this is needed i dont know why
-;; (add-hook 'c++-mode-hook 'font-lock-debug-fontify)
+(use-package modern-cpp-font-lock
+  :config
+  (modern-c++-font-lock-global-mode t))
+
 

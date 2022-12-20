@@ -31,6 +31,3 @@
 (use-package magit-todos
   :after magit
   :hook (magit-mode . magit-todos-mode))
-
-(use-package forge
-  :after magit)
