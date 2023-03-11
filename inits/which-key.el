@@ -1,10 +1,6 @@
 (use-package which-key
-  :demand t
-  :delight
-  :commands
-  (which-key-mode)
-  :init
-  (which-key-mode)
+  :commands (which-key-mode)
+  :init (which-key-mode)
   :custom
   (which-key-idle-delay 0.2)                         ;; Reduce the time before which-key pops up
   (which-key-allow-evil-operators t)                 ;; Show evil keybindings

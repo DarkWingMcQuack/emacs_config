@@ -1,5 +1,4 @@
-(use-package crux
-  :demand t)
+(use-package crux)
 
 
 (general-define-key
@@ -19,25 +18,25 @@
 (defun my-open-term()
   (interactive)
   (if (string-equal (buffer-name) "*terminal*")
-	  (delete-window)
-	(progn
-	  (split-window-below -15)
-	  (other-window -1)
-	  (term "/bin/bash")
-	  (evil-normal-state)
-	  (move-end-of-line nil))))
+      (delete-window)
+    (progn
+      (split-window-below -15)
+      (other-window -1)
+      (term "/bin/bash")
+      (evil-normal-state)
+      (move-end-of-line nil))))
 
 (defun my-format-buffer ()
   (interactive)
   (save-excursion
-	(indent-region (point-min) (point-max) nil)))
+    (indent-region (point-min) (point-max) nil)))
 
 
 (my-leader
   :keymaps 'override
   "t" '(my-open-term :wk "open terminal")
 
-  "q q" '(save-buffers-kill-terminal :wk "fill screen")
+  "q q" '(save-buffers-kill-terminal :wk "kill emacs")
 
   "w f" '(toggle-frame-fullscreen :wk "fill screen")
   "w h" '(split-window-horizontally :wk "horizontal split")
@@ -52,7 +51,7 @@
   "b b" '(crux-switch-to-previous-buffer :wk "switch to last buffer")
   "b x" '(eval-buffer :wk "execute elisp buffer")
   "b f" '(switch-to-buffer :wk "find buffer")
-  "b d" '(evil-delete-buffer :wk "kill current buffer")
+  "b d" '(kill-current-buffer :wk "kill current buffer")
   "b q" '(crux-kill-other-buffers :wk "kill other buffers")
 
   "f s" '(save-buffer :wk "save current buffer")

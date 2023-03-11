@@ -2,15 +2,9 @@
   :custom
   ;; performance
   (lsp-idle-delay 0.500)
-  (lsp-log-io nil)
-  (lsp-print-io nil)
-  (lsp-trace nil)
-  (lsp-print-performance nil)
   (lsp-completion-provider :none)
 
-  (lsp-ui-doc-enable nil)
   (lsp-lens-enable t)
-  (lsp-ui-sideline-show-code-actions t)
 
   (company-lsp-enable-snippet t)
 
@@ -18,7 +12,6 @@
   (lsp-enable-snippet t)
   (lsp-enable-completion-at-point t)
   (lsp-enable-xref t)
-  (lsp-enable-indentation t)
   (lsp-signature-auto-activate t)
   (lsp-signature-render-documentation t)
   (lsp-enable-text-document-color t)
@@ -43,12 +36,12 @@
 
   :general
   (my-leader 'lsp-mode-map
-	:states 'normal
-	"TAB" '(lsp-format-buffer :wk "format buffer")
-	"s d" '(lsp-describe-thing-at-point :wk "show documentation")
-	"x r" '(xref-find-references :wk "xref find references")
-	"x a" '(xref-find-apropos :wk "xref find apropos")
-	"d"   '(lsp-ui-doc-glance :wk "peek documentation"))
+    :states 'normal
+    "TAB" '(lsp-format-buffer :wk "format buffer")
+    "s d" '(lsp-describe-thing-at-point :wk "show documentation")
+    "x r" '(xref-find-references :wk "xref find references")
+    "x a" '(xref-find-apropos :wk "xref find apropos")
+    "d"   '(lsp-ui-doc-glance :wk "peek documentation"))
 
   (general-define-key
    :keymaps 'lsp-mode-map
@@ -57,17 +50,12 @@
    "g d" '(lsp-find-definition :wk "goto definition")))
 
 
-(use-package lsp-pyright
-  :after lsp-mode
-  :hook (python-mode . lsp))
-
-
 (use-package lsp-ui
   :after lsp-mode
   :custom
-
   (lsp-ui-doc-enable nil)
   (lsp-ui-doc-position 'at-point) ;; top, bottom, or at-point
+  (lsp-ui-sideline-show-code-actions t)
 
   ;; lsp-ui-flycheck
   (lsp-ui-flycheck-enable t)
@@ -76,10 +64,6 @@
   (lsp-ui-peek-enable nil)
 
   :hook (lsp-mode . lsp-ui-mode))
-
-;; Add metals backend for lsp-mode
-;; for scala
-(use-package lsp-metals)
 
 (use-package dap-mode
   :hook

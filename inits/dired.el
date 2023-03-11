@@ -6,7 +6,7 @@
 
   :general
   (my-leader 'dired-mode-map
-	"+" '(dired-create-directory :wk "new directory"))
+    "+" '(dired-create-directory :wk "new directory"))
 
   (general-define-key
    :keymaps 'dired-mode-map

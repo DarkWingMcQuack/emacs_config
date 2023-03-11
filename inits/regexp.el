@@ -5,9 +5,7 @@
 (use-package visual-regexp-steroids
   :commands (vr/replace vr/query-replace)
   :after visual-regexp
-  :custom
-  (vr/engine 'python "Use python regular expressions")
   :general
   (my-leader
-	:states 'normal
-	"r r" '(vr/replace :wk "regexp replace")))
+    :states 'normal
+    "r r" '(vr/replace :wk "regexp replace")))

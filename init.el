@@ -1,107 +1,85 @@
-;;; init.el --- this file loads all the init files of my config  -*- lexical-binding: t; -*-
-
-;; Copyright (C) 2018
-
-;; Author:  <lukas@GentooPad>
-;; Keywords: tools, tools, abbrev
-
-;;; Commentary:
-
-
-;;; Code:
-(defconst dd/using-native-comp (and
-								(fboundp 'native-comp-available-p)
-                                (native-comp-available-p)))
-(setq native-comp-deferred-compilation t)
-(setq native-comp-async-query-on-exit t)
-(setq native-comp-async-jobs-number 4)
-(setq native-comp-async-report-warnings-errors nil)
-
-
-
-(defvar local-dir user-emacs-directory
-  "The root dir of the Emacs configuration.")
-
 (defun local-file-name (file-name)
-  (let* ((file-path (expand-file-name file-name local-dir))
+  (let* ((file-path (expand-file-name file-name user-emacs-directory))
          (parent-dir (file-name-directory file-path)))
     (unless (or (not parent-dir)
                 (file-exists-p parent-dir))
       (make-directory parent-dir))
     file-path))
 
+;; func which loads file in the init dir
+(defun load-user-file (file)
+  (interactive "f")
+  "Load a file in current user's configuration directory"
+  (load-file (local-file-name file)))
 
 ;;load core
-(load (local-file-name "core/core-packages"))
-(load (local-file-name "core/core-server"))
-(load (local-file-name "core/core-env"))
+(load-user-file "core/core-perf.el")
+(load-user-file "core/straight.el")
+(load-user-file "core/core-env.el")
+(load-user-file "core/core-server.el")
 
-(load (local-file-name "inits/general"))
+(load-user-file "inits/general.el")
+(load-user-file "inits/fonts.el")
+(load-user-file "inits/saveplace.el")
+(load-user-file "inits/auto-package-updater.el")
+(load-user-file "inits/dired.el")
+(load-user-file "inits/regexp.el")
+(load-user-file "inits/evil.el")
+(load-user-file "inits/yaml.el")
+(load-user-file "inits/prettify-symbols.el")
+(load-user-file "inits/ivy.el")
+(load-user-file "inits/lsp.el")
+(load-user-file "inits/my-return.el")
+(load-user-file "inits/cmake.el")
+(load-user-file "inits/cpp.el")
+(load-user-file "inits/swiper.el")
 
-(load (local-file-name "inits/fonts"))
+(load-user-file "inits/ui-config.el")
+(load-user-file "inits/indent-guide.el")
+(load-user-file "inits/linum.el")
+(load-user-file "inits/drag-stuff.el")
+(load-user-file "inits/origami.el")
+(load-user-file "inits/which-key.el")
+(load-user-file "inits/flycheck.el")
+(load-user-file "inits/flyspell.el")
+(load-user-file "inits/snippets.el")
 
+(load-user-file "inits/company.el")
+(load-user-file "inits/projectile.el")
 
-;; (load (local-file-name "inits/auto-package-updater"))
-(load (local-file-name "inits/dired"))
-(load (local-file-name "inits/regexp"))
-(load (local-file-name "inits/evil"))
-(load (local-file-name "inits/avy"))
-(load (local-file-name "inits/yaml"))
-(load (local-file-name "inits/prettify-symbols"))
-(load (local-file-name "inits/ivy"))
-(load (local-file-name "inits/lsp"))
-(load (local-file-name "inits/go"))
-(load (local-file-name "inits/rust"))
-(load (local-file-name "inits/my-return"))
-(load (local-file-name "inits/cmake"))
-(load (local-file-name "inits/cpp"))
-(load (local-file-name "inits/crux"))
-(load (local-file-name "inits/swiper"))
-
-;;load the rest
-(load (local-file-name "inits/ui-config"))
-;; (load (local-file-name "inits/indent-guide"))
-(load (local-file-name "inits/linum"))
-(load (local-file-name "inits/drag-stuff"))
-(load (local-file-name "inits/hideshow"))
-(load (local-file-name "inits/which-key"))
-(load (local-file-name "inits/flycheck"))
-(load (local-file-name "inits/flyspell"))
-(load (local-file-name "inits/snippets"))
-
-
-(load (local-file-name "inits/company"))
-;; (load (local-file-name "inits/completion"))
-(load (local-file-name "inits/projectile"))
-(load (local-file-name "inits/cpp"))
-(load (local-file-name "inits/magit"))
-(load (local-file-name "inits/elisp"))
-(load (local-file-name "inits/haskell"))
-(load (local-file-name "inits/file-handling"))
-(load (local-file-name "inits/undotree"))
-(load (local-file-name "inits/neotree"))
-(load (local-file-name "inits/rainbow"))
-(load (local-file-name "inits/smartparens"))
-(load (local-file-name "inits/markdown"))
-(load (local-file-name "inits/scala"))
-(load (local-file-name "inits/git-gutter"))
-(load (local-file-name "inits/docker"))
-(load (local-file-name "inits/typescript"))
-(load (local-file-name "inits/dashboard"))
-(load (local-file-name "inits/org"))
-(load (local-file-name "inits/keybindings"))
-(load (local-file-name "inits/subword"))
-(load (local-file-name "inits/hl-todo"))
-(load (local-file-name "inits/ebnf"))
-(load (local-file-name "inits/ws-cleanup"))
-(load (local-file-name "inits/unicode"))
-
-
-;;custom.el bullshit
-(setq custom-file (local-file-name "custom.el"))
-(load custom-file t)
-
-
-;;; init.el ends here
-(put 'dired-find-alternate-file 'disabled nil)
-(put 'downcase-region 'disabled nil)
+(load-user-file "inits/magit.el")
+(load-user-file "inits/elisp.el")
+(load-user-file "inits/haskell.el")
+(load-user-file "inits/file-handling.el")
+(load-user-file "inits/undotree.el")
+(load-user-file "inits/neotree.el")
+(load-user-file "inits/rainbow.el")
+(load-user-file "inits/smartparens.el")
+(load-user-file "inits/markdown.el")
+(load-user-file "inits/scala.el")
+(load-user-file "inits/git-gutter.el")
+(load-user-file "inits/docker.el")
+(load-user-file "inits/typescript.el")
+(load-user-file "inits/dashboard.el")
+(load-user-file "inits/org.el")
+(load-user-file "inits/keybindings.el")
+(load-user-file "inits/subword.el")
+(load-user-file "inits/hl-todo.el")
+(load-user-file "inits/ws-cleanup.el")
+(load-user-file "inits/unicode.el")
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(company-insertion-on-trigger nil nil nil "Customized with use-package company")
+ '(company-show-quick-access nil nil nil "Customized with use-package company")
+ '(delete-selection-mode nil)
+ '(tab-width 4)
+ '(warning-suppress-log-types '((comp))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

@@ -1,5 +1,3 @@
-;; TODO use use-package for this
-
 (global-prettify-symbols-mode 1)
 
 ;; pretiffy c++ range based for loops

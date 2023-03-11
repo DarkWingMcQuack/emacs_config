@@ -1,20 +1,15 @@
 (use-package undo-tree
-  :diminish
   :init
-  (global-undo-tree-mode 1)
-
-  :config
-  (custom-set-variables
-   '(undo-tree-history-directory-alist
-	 (quote (("." . "~/.emacs.d/undo/")))))
+  (global-undo-tree-mode)
 
   :custom
+  (undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
   (undo-tree-visualizer-timestamps t)
   (undo-tree-auto-save-history t)
 
   :general
   (my-leader
-	"u" '(undo-tree-visualize :wk "switch project"))
+    "u" '(undo-tree-visualize :wk "open undotree"))
 
   (general-define-key
    :states 'normal

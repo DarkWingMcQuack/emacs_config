@@ -3,7 +3,7 @@
 (use-package ivy
   :config
   (setq ivy-re-builders-alist
-		'((t . ivy--regex-fuzzy))) 
+        '((t . ivy--regex-fuzzy))) 
   (ivy-mode)
 
   :after flx
@@ -17,13 +17,17 @@
    "C-j" 'ivy-immediate-done
    "RET" 'ivy-alt-done))
 
+;; install smex before counsel to make Mx remember the commands we executed
+(use-package smex)
+
 (use-package counsel
+  :after smex
   :config
   (counsel-mode)
 
   :general
   (my-leader
-	"f f" '(counsel-find-file :wk "find file"))
+    "f f" '(counsel-find-file :wk "find file"))
   (general-define-key
    "M-x" 'counsel-M-x))
 
@@ -32,12 +36,8 @@
   (counsel-projectile-mode)
   :general
   (my-leader
-	"p p" '(counsel-projectile-switch-project :wk "switch project")
-	"p f" '(counsel-projectile-find-file :wk "find project file")))
-
-(use-package all-the-icons-ivy-rich
-  :ensure t
-  :init (all-the-icons-ivy-rich-mode 1))
+    "p p" '(counsel-projectile-switch-project :wk "switch project")
+    "p f" '(counsel-projectile-find-file :wk "find project file")))
 
 ;; More friendly interface for ivy
 ;; https://github.com/Yevgnen/ivy-rich

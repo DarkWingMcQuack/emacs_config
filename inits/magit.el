@@ -1,17 +1,16 @@
 (use-package magit
-  :commands magit-status
   :general
   (general-define-key
    :keymaps 'magit-mode-map
    :states 'normal
    "q" (lambda()
-		 (interactive)
-		 (magit-mode-bury-buffer t)))
+         (interactive)
+         (magit-mode-bury-buffer t)))
 
   (my-leader
-	"g g" '(magit-status :wk "magit status")
-	"g t" '(magit-todos-list :wk "show todos")
-	"g p" '(magit-push :wk "push"))
+    "g g" '(magit-status :wk "magit status")
+    "g t" '(magit-todos-list :wk "show todos")
+    "g p" '(magit-push :wk "push"))
 
   (general-define-key
    :keymaps 'transient-map
