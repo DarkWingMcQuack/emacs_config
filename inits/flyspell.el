@@ -1,7 +1,7 @@
 (use-package flyspell
   :hook
   (text-mode . flyspell-mode)
-  ;; (prog-mode . flyspell-prog-mode)
+  (prog-mode . flyspell-prog-mode)
 
   :config
   (defun fd-switch-dictionary()
@@ -22,6 +22,7 @@
         (not (looking-at "https?\\b"))))) 
 
   (put 'text-mode 'flyspell-mode-predicate 'flyspell-ignore-http-and-https)
+  (put 'prog-mode 'flyspell-mode-predicate 'flyspell-ignore-http-and-https)
 
   :custom
   (flyspell-issue-message-flag nil)
