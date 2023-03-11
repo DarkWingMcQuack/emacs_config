@@ -1,4 +1,8 @@
 ;; Install straight.el
+
+;; dont report all the warnings and errors
+(setq native-comp-async-report-warnings-errors nil)
+
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))

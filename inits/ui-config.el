@@ -19,12 +19,7 @@
       scroll-preserve-screen-position 1)
 
 ;; mode line settings
-(line-number-mode t)
-(column-number-mode t)
 (size-indication-mode t)
-
-;; set font
-(setq default-frame-alist '((font . "Source Code Pro-10")))
 
 
 ;; stop prompting me, allright?
