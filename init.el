@@ -68,3 +68,4 @@
 (load-user-file "inits/ws-cleanup.el")
 (load-user-file "inits/unicode.el")
 (load-user-file "inits/ligatures.el")
+(load-user-file "inits/dimmer.el")
