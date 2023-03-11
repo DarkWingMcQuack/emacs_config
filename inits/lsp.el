@@ -3,11 +3,10 @@
   ;; performance
   (lsp-idle-delay 0.500)
   (lsp-completion-provider :none)
+  (lsp-log-io nil)
 
   (lsp-lens-enable t)
-
   (company-lsp-enable-snippet t)
-
   (lsp-auto-guess-root t)
   (lsp-enable-snippet t)
   (lsp-enable-completion-at-point t)
@@ -16,11 +15,10 @@
   (lsp-signature-render-documentation t)
   (lsp-enable-text-document-color t)
   (lsp-enable-indentation t)
-
+  (lsp-enable-folding nil)
   (lsp-semantic-tokens-enable nil)
   (lsp-headerline-breadcrumb-enable nil)
   (lsp-modeline-code-actions-segments '(count icon name))
-
   (lsp-signature-function 'lsp-signature-posframe)
 
   :hook
@@ -52,6 +50,7 @@
 
 (use-package lsp-ui
   :after lsp-mode
+  :hook (lsp-mode . lsp-ui-mode)
   :custom
   (lsp-ui-doc-enable nil)
   (lsp-ui-doc-position 'at-point) ;; top, bottom, or at-point
@@ -61,9 +60,7 @@
   (lsp-ui-flycheck-enable t)
 
   (lsp-ui-sideline-enable nil)
-  (lsp-ui-peek-enable nil)
-
-  :hook (lsp-mode . lsp-ui-mode))
+  (lsp-ui-peek-enable nil))
 
 (use-package dap-mode
   :hook
