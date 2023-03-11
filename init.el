@@ -69,3 +69,4 @@
 (load-user-file "inits/unicode.el")
 (load-user-file "inits/ligatures.el")
 (load-user-file "inits/dimmer.el")
+(load-user-file "inits/mode-icons.el")
