@@ -22,12 +22,12 @@
   (lsp-signature-function 'lsp-signature-posframe)
 
   :hook
-  (go-mode . lsp-defered)
-  (python-mode . lsp-defered)
-  (c++-mode . lsp-defered)
-  (c-mode . lsp-defered)
-  (rust-mode . lsp-defered)
-  (scala-mode . lsp-defered)
+  (go-mode . lsp)
+  (python-mode . lsp)
+  (c++-mode . lsp)
+  (c-mode . lsp)
+  (rust-mode . lsp)
+  (scala-mode . lsp)
   (lsp-mode . lsp-lens-mode)
   (lsp-mode . lsp-signature-mode)
 
