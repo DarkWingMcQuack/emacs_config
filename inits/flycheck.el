@@ -1,7 +1,7 @@
 (use-package flycheck
   :custom
   (flycheck-display-errors-delay 0.5)
-  (flycheck-check-syntax-automatically '(mode-enabled save))
+  (flycheck-check-syntax-automatically '(mode-enabled save new-line idle-change))
   :config
   (global-flycheck-mode)
 
