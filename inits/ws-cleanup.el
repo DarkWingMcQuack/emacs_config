@@ -6,7 +6,8 @@
 (use-package whitespace-cleanup-mode
   :config
   (add-hook 'before-save-hook (lambda () (untabify-except-makefiles)))
-  (custom-set-variables
-   '(tab-width 4))
+  (global-whitespace-cleanup-mode)
   (setq-default indent-tabs-mode nil)
-  (global-whitespace-cleanup-mode))
+  :custom
+  (tab-width 4)
+  (show-trailing-whitespace t))
