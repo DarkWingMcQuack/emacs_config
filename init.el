@@ -33,7 +33,6 @@
 (load-user-file "inits/cmake.el")
 (load-user-file "inits/cpp.el")
 (load-user-file "inits/swiper.el")
-
 (load-user-file "inits/ui-config.el")
 (load-user-file "inits/indent-guide.el")
 (load-user-file "inits/linum.el")
@@ -43,10 +42,8 @@
 (load-user-file "inits/flycheck.el")
 (load-user-file "inits/flyspell.el")
 (load-user-file "inits/snippets.el")
-
 (load-user-file "inits/company.el")
 (load-user-file "inits/projectile.el")
-
 (load-user-file "inits/magit.el")
 (load-user-file "inits/elisp.el")
 (load-user-file "inits/haskell.el")
