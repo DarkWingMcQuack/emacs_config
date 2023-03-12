@@ -22,7 +22,7 @@
 (load-user-file "inits/fonts.el")
 (load-user-file "inits/saveplace.el")
 (load-user-file "inits/auto-package-updater.el")
-(load-user-file "inits/dired.el")
+(load-user-file "inits/ranger.el")
 (load-user-file "inits/regexp.el")
 (load-user-file "inits/evil.el")
 (load-user-file "inits/yaml.el")

@@ -55,5 +55,4 @@
   "b q" '(crux-kill-other-buffers :wk "kill other buffers")
 
   "f s" '(save-buffer :wk "save current buffer")
-  "f r" '(crux-rename-file-and-buffer :wk "rename file")
-  "f d" '(dired :wk "dired"))
+  "f r" '(crux-rename-file-and-buffer :wk "rename file"))
