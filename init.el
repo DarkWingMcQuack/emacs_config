@@ -70,3 +70,4 @@
 (load-user-file "inits/ligatures.el")
 (load-user-file "inits/dimmer.el")
 (load-user-file "inits/mode-icons.el")
+(load-user-file "inits/multi-cursor.el")
