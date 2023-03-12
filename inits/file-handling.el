@@ -4,8 +4,11 @@
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 
+;;don't create lock files
+(setq create-lockfiles nil)
+;; delete backup files once the file in question is saved
+(setq delete-auto-save-files t)
 
-(setq create-lockfiles nil) ;;dont create lock files
 
 ;; whenever an external process changes a file underneath emacs, and there
 ;; was no unsaved changes in the corresponding buffer, just revert its
