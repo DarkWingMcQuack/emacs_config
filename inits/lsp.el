@@ -21,6 +21,12 @@
   (lsp-modeline-code-actions-segments '(count icon name))
   (lsp-signature-function 'lsp-signature-posframe)
 
+  ;; pylsp configuration
+  (lsp-pylsp-plugins-ruff-enabled t)
+  (lsp-pylsp-plugins-black-enabled t)
+  (lsp-pylsp-plugins-flake8-enabled nil)
+
+
   :hook
   (go-mode . lsp)
   (python-mode . lsp)
