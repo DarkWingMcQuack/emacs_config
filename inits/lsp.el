@@ -1,7 +1,7 @@
 (use-package lsp-mode
   :custom
   ;; performance
-  (lsp-idle-delay 0.500)
+  (lsp-idle-delay 0.100)
   (lsp-completion-provider :none)
   (lsp-log-io nil)
 
