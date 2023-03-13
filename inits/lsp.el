@@ -24,6 +24,7 @@
   ;; pylsp configuration
   (lsp-pylsp-plugins-ruff-enabled t)
   (lsp-pylsp-plugins-black-enabled t)
+  (lsp-pylsp-plugins-rope_autoimport-enabled t)
   (lsp-pylsp-plugins-flake8-enabled nil)
 
 
