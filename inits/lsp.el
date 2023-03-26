@@ -64,7 +64,7 @@
   (lsp-ui-sideline-show-code-actions t)
 
   ;; lsp-ui-flycheck
-  (lsp-ui-flycheck-enable t)
+  ;; (lsp-ui-flycheck-enable t)
 
   (lsp-ui-sideline-enable nil)
   (lsp-ui-peek-enable nil))

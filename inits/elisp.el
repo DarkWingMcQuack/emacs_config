@@ -1,7 +1,12 @@
-;; elisp.el
 (use-package eldoc
   :diminish eldoc-mode
   :config
-  (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode))
-
-;;;elisp.el ends here
+  (defun greek-lambda ()
+    (font-lock-add-keywords nil `(("\\<lambda\\>"
+                                   (0
+                                    (progn
+                                      (compose-region (match-beginning 0) (match-end 0)
+                                                      ,(make-char 'greek-iso8859-7 107))
+                                      nil))))))
+  (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+  (add-hook 'emacs-lisp-mode-hook 'greek-lambda))

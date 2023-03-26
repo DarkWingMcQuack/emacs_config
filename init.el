@@ -27,6 +27,7 @@
 (load-user-file "inits/evil.el")
 (load-user-file "inits/yaml.el")
 (load-user-file "inits/prettify-symbols.el")
+(load-user-file "inits/python.el")
 (load-user-file "inits/ivy.el")
 (load-user-file "inits/lsp.el")
 (load-user-file "inits/my-return.el")
