@@ -8,7 +8,6 @@
                            ("not" .      #x2757)
                            ("in" .       #x2208)
                            ("not in" .   #x2209)
-                           ("for" .      #x2200)
                            ;; Base Types
                            ("int" .      #x2124)
                            ("float" .    #x211d)))))
