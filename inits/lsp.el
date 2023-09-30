@@ -30,6 +30,7 @@
 
   :hook
   (go-mode . lsp)
+  (rust-mode . lsp)
   (python-mode . lsp)
   (c++-mode . lsp)
   (c-mode . lsp)
@@ -60,6 +61,7 @@
   :hook (lsp-mode . lsp-ui-mode)
   :custom
   (lsp-ui-doc-enable nil)
+  (lsp-ui-doc-delay 2)
   (lsp-ui-doc-position 'at-point) ;; top, bottom, or at-point
   (lsp-ui-sideline-show-code-actions t)
 

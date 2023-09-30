@@ -2,6 +2,7 @@
 
 ;; dont report all the warnings and errors
 (setq native-comp-async-report-warnings-errors nil)
+(defvar native-comp-deferred-compilation-deny-list nil)
 (setq native-comp-speed 3)
 
 (defvar bootstrap-version)

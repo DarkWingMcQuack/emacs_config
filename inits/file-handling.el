@@ -4,10 +4,18 @@
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 
-;;don't create lock files
-(setq create-lockfiles nil)
-;; delete backup files once the file in question is saved
-(setq delete-auto-save-files t)
+
+(setq
+ create-lockfiles nil     ; don't create lock files
+ delete-auto-save-files t ; delete backup files once the file in question is saved
+ backup-by-copying t      ; don't clobber symlinks
+ backup-directory-alist
+ '(("." . "~/.saves/"))   ; don't litter my fs tree
+ delete-old-versions t
+ kept-new-versions 6
+ kept-old-versions 2
+ version-control t)       ; use versioned backups
+
 
 
 ;; whenever an external process changes a file underneath emacs, and there

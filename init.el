@@ -27,6 +27,7 @@
 (load-user-file "inits/evil.el")
 (load-user-file "inits/yaml.el")
 (load-user-file "inits/prettify-symbols.el")
+(load-user-file "inits/rust.el")
 (load-user-file "inits/python.el")
 (load-user-file "inits/ivy.el")
 (load-user-file "inits/lsp.el")
@@ -38,7 +39,7 @@
 (load-user-file "inits/indent-guide.el")
 (load-user-file "inits/linum.el")
 (load-user-file "inits/drag-stuff.el")
-(load-user-file "inits/origami.el")
+(load-user-file "inits/tree-sitter.el")
 (load-user-file "inits/which-key.el")
 (load-user-file "inits/flycheck.el")
 (load-user-file "inits/flyspell.el")
@@ -69,3 +70,6 @@
 (load-user-file "inits/dimmer.el")
 (load-user-file "inits/mode-icons.el")
 (load-user-file "inits/multi-cursor.el")
+;; ## added by OPAM user-setup for emacs / base ## 56ab50dc8996d2bb95e7856a6eddb17b ## you can edit, but keep this line
+(require 'opam-user-setup "~/.emacs.d/opam-user-setup.el")
+;; ## end of OPAM user-setup addition for emacs / base ## keep this line
