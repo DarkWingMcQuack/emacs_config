@@ -3,7 +3,7 @@
 (use-package ivy
   :config
   (setq ivy-re-builders-alist
-        '((t . ivy--regex-fuzzy))) 
+        '((t . ivy--regex-fuzzy)))
   (ivy-mode)
 
   :after flx
