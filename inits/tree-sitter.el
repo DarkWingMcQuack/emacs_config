@@ -13,5 +13,5 @@
   (global-ts-fold-mode)
   :general
   (general-define-key
-   :states 'motion
+   :states 'normal
    "z a" 'ts-fold-toggle))

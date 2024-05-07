@@ -26,11 +26,6 @@
       (evil-normal-state)
       (move-end-of-line nil))))
 
-(defun my-format-buffer ()
-  (interactive)
-  (save-excursion
-    (indent-region (point-min) (point-max) nil)))
-
 
 (my-leader
   :keymaps 'override
@@ -45,8 +40,6 @@
   "w o" '(delete-other-windows :wk "delete other windows")
   "w d" '(delete-window :wk "delete current window")
   "w s" '(crux-transpose-windows :wk "switch windows")
-
-  "TAB" '(my-format-buffer :wk "format buffer")
 
   "b b" '(crux-switch-to-previous-buffer :wk "switch to last buffer")
   "b x" '(eval-buffer :wk "execute elisp buffer")

@@ -42,7 +42,7 @@
 ;; More friendly interface for ivy
 ;; https://github.com/Yevgnen/ivy-rich
 (use-package ivy-rich
-  :after (ivy counsel-projectile counsel ivy-xref)
+  :after ivy
   :config
   (ivy-rich-mode 1)
   :custom
