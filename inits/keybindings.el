@@ -1,8 +1,8 @@
 (use-package crux)
 
-
 (general-define-key
  :states 'normal
+ "C-p" '(counsel-yank-pop :wk "yank from killbuffer")'
  "g l" '(goto-line :wk "goto line")
  "q"   '(delete-window :wk "delete current window"))
 
@@ -23,7 +23,7 @@
       (split-window-below -15)
       (other-window -1)
       (term "/bin/bash")
-      (evil-normal-state)
+      (evil-insert-state)
       (move-end-of-line nil))))
 
 
