@@ -56,7 +56,6 @@ eshell/
 transient/
 anaconda-mode/
 cache/
-snippets/
 auto-save-list/
 url/
 straight/
@@ -74,3 +73,5 @@ ido.last
 /eln-cache/
 /var/
 /recentf
+/history
+/projects

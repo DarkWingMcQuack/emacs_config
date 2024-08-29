@@ -5,6 +5,13 @@
   (evil-shift-width 2)
   (evil-default-state 'normal)
   :config
+  (defun color-minibuffer (color)
+      `(lambda ()
+          (when (minibufferp)
+              (face-remap-add-relative 'minibuffer-prompt :foreground ,color))))
+  (add-hook 'evil-normal-state-entry-hook   (color-minibuffer "#8000FF"))
+  (add-hook 'evil-insert-state-entry-hook   (color-minibuffer "#FF8000"))
+
   (evil-mode 1))
 
 (use-package evil-nerd-commenter

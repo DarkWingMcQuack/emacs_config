@@ -1,8 +1,8 @@
 ;; If you are about to read this bullshit there
-;; is a high propability you will get eye-cancerweeee
+;; is a high propability you will get eye-cancer
 
 (require 'smartparens (concat user-emacs-directory
-							  (convert-standard-filename "inits/smartparens.el")))
+                              (convert-standard-filename "inits/smartparens.el")))
 
 (defun delete-ws-forward ()
   "Deletes all whitespace in front of cursor."
@@ -29,8 +29,8 @@
   (interactive)
 
   (let* ((line (thing-at-point 'line t))
-		 (regexp (concat "[[:space:]]*" comment-start "*.*$")))
-	(string-match regexp line)))
+         (regexp (concat "[[:space:]]*" comment-start "*.*$")))
+    (string-match regexp line)))
 
 (defun is-inside-multiline-comment ()
   "check if the cursor is currently in a multiline comment"
@@ -38,21 +38,21 @@
 
   (let* ((last (point))
          (line-beginning 
-		  (progn (beginning-of-line) 
-				 (point)))
-		 (result 
-		  (if (search-backward "*/" nil t)
-			  ;; there are some comment endings - search forward
-			  (search-forward "/*" last t)
-			;; it's the only comment - search backward
-			(goto-char last)
-			(search-backward "/*" nil t))))
-	(progn
-	  (goto-char last)
-	  ;; (nth 4 (syntax-ppss)) checks if the cursor is currently in a comment
-	  ;; this avoids the problem of having "/*" as a string but not being in a comment
-	  (and (nth 4 (syntax-ppss))
-		   result))))
+          (progn (beginning-of-line) 
+                 (point)))
+         (result 
+          (if (search-backward "*/" nil t)
+              ;; there are some comment endings - search forward
+              (search-forward "/*" last t)
+            ;; it's the only comment - search backward
+            (goto-char last)
+            (search-backward "/*" nil t))))
+    (progn
+      (goto-char last)
+      ;; (nth 4 (syntax-ppss)) checks if the cursor is currently in a comment
+      ;; this avoids the problem of having "/*" as a string but not being in a comment
+      (and (nth 4 (syntax-ppss))
+           result))))
 
 (defun my-super-return ()
   "My super return check for programming languages.
@@ -64,43 +64,43 @@ If the cursor is in a block comment the next line starts with a *
 "
   (interactive)
   (cond ((and
-		  (looking-at-p "[[:space:]]*)")
-		  (not
-		   (looking-back 
-			",[[:space:]]*" 
-			nil))
-		  ;; do not jump out of sexp if the major mode is a lisp-mode
-		  (not 
-		   (or 
-			(derived-mode-p 'lisp-mode)
-			(derived-mode-p 'emacs-lisp-mode))))
-		 (progn
-		   (delete-ws-forward)
-		   (delete-ws-backward)
-		   (sp-up-sexp)))
-
-		;; jump one char if the next char is just a ;
-		((and
-		  (looking-back ".*[[:space:]]*" nil)
-		  (looking-at-p "[[:space:]]*;")
-		  (not (string-match  ";+" comment-start)))
-		 (progn
-		   (delete-ws-forward)
-		   (delete-ws-backward)
-		   (forward-char)))
-
-		;; create newline with comment if current line is oneline comment
-		((is-inside-oneline-comment)
-		 (comment-indent-new-line))
-
-		;; create newline with * if current line is block comment
-		((is-inside-multiline-comment)
+          (looking-at-p "[[:space:]]*)")
+          (not
+           (looking-back 
+            ",[[:space:]]*" 
+            nil))
+          ;; do not jump out of sexp if the major mode is a lisp-mode
+          (not 
+           (or 
+            (derived-mode-p 'lisp-mode)
+            (derived-mode-p 'emacs-lisp-mode))))
          (progn
-		   (insert "\n* ")
-		   (indent-for-tab-command))
-		 )
+           (delete-ws-forward)
+           (delete-ws-backward)
+           (sp-up-sexp)))
 
-		(t (newline-and-indent))))
+        ;; jump one char if the next char is just a ;
+        ((and
+          (looking-back ".*[[:space:]]*" nil)
+          (looking-at-p "[[:space:]]*;")
+          (not (string-match  ";+" comment-start)))
+         (progn
+           (delete-ws-forward)
+           (delete-ws-backward)
+           (forward-char)))
+
+        ;; create newline with comment if current line is oneline comment
+        ((is-inside-oneline-comment)
+         (comment-indent-new-line))
+
+        ;; create newline with * if current line is block comment
+        ((is-inside-multiline-comment)
+         (progn
+           (insert "\n* ")
+           (indent-for-tab-command))
+         )
+
+        (t (newline-and-indent))))
 
 
 (general-define-key

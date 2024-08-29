@@ -6,7 +6,7 @@
   (lsp-log-io nil)
 
   (lsp-lens-enable t)
-  (company-lsp-enable-snippet t)
+  (company-lsp-enable-snippet nil)
   (lsp-auto-guess-root t)
   (lsp-enable-snippet t)
   (lsp-enable-completion-at-point t)
@@ -20,6 +20,7 @@
   (lsp-headerline-breadcrumb-enable nil)
   (lsp-modeline-code-actions-segments '(count icon name))
   (lsp-signature-function 'lsp-signature-posframe)
+  (lsp-signature-cycle t)
 
   ;; pylsp configuration
   (lsp-pylsp-plugins-ruff-enabled t)
@@ -38,7 +39,6 @@
   (lsp-mode . lsp-lens-mode)
   (lsp-mode . lsp-signature-mode)
 
-
   :general
   (my-leader 'lsp-mode-map
     :states 'normal
@@ -47,6 +47,10 @@
     "x r" '(xref-find-references :wk "xref find references")
     "x a" '(xref-find-apropos :wk "xref find apropos")
     "d"   '(lsp-ui-doc-glance :wk "peek documentation"))
+
+  (general-define-key
+   :keymaps 'lsp-signature-mode-map
+   "TAB" '(lsp-signature-next :wk "next signature"))
 
   (general-define-key
    :keymaps 'lsp-mode-map
@@ -63,10 +67,7 @@
   (lsp-ui-doc-delay 2)
   (lsp-ui-doc-position 'at-point) ;; top, bottom, or at-point
   (lsp-ui-sideline-show-code-actions t)
-
-  ;; lsp-ui-flycheck
-  ;; (lsp-ui-flycheck-enable t)
-
+  (lsp-ui-flycheck-enable t)
   (lsp-ui-sideline-enable nil)
   (lsp-ui-peek-enable nil))
 
