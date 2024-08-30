@@ -22,6 +22,7 @@
 (load-user-file "inits/evil.el")
 
 (load-user-file "inits/auto-package-updater.el")
+(load-user-file "inits/centered-cursor.el")
 (load-user-file "inits/cmake.el")
 (load-user-file "inits/company.el")
 (load-user-file "inits/consult.el")
@@ -62,6 +63,7 @@
 (load-user-file "inits/regexp.el")
 (load-user-file "inits/rust.el")
 (load-user-file "inits/saveplace.el")
+(load-user-file "inits/savehist.el")
 (load-user-file "inits/scala.el")
 (load-user-file "inits/smartparens.el")
 (load-user-file "inits/snippets.el")
