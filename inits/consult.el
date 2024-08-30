@@ -6,6 +6,7 @@
 
   (general-define-key
     :states 'normal
+    "M-p" '(consult-yank-pop :wk "yank pop")
     "F"  '(consult-line :wk "find line")
     "g l" '(consult-goto-line :wk "goto line")))
 
