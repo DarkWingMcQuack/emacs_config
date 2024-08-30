@@ -1,4 +1,3 @@
-(use-package kaolin-themes
+(use-package doom-themes
   :config
-  (load-theme 'kaolin-galaxy t)
-  (kaolin-treemacs-theme))
+  (load-theme 'doom-peacock t))
