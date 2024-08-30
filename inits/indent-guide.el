@@ -12,8 +12,8 @@
 ;;   (set-face-background 'highlight-indent-guides-even-face "orange")
 ;;   (set-face-foreground 'highlight-indent-guides-character-face "orange"))
 
-(use-package highlight-indentation
-  :hook
-  (prog-mode . highlight-indentation-mode)
-  :custom
-  (highlight-indentation-blank-lines t))
+;; (use-package highlight-indentation
+;;   :hook
+;;   (prog-mode . highlight-indentation-mode)
+;;   :custom
+;;   (highlight-indentation-blank-lines t))
