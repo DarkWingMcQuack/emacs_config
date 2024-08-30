@@ -5,6 +5,9 @@
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
 
+(setq set-fringe-mode 0)
+
+
 (defun my/disable-scroll-bars (frame)
   (modify-frame-parameters frame
                            '((vertical-scroll-bars . nil)
