@@ -49,10 +49,6 @@
     "d"   '(lsp-ui-doc-glance :wk "peek documentation"))
 
   (general-define-key
-   :keymaps 'lsp-signature-mode-map
-   "TAB" '(lsp-signature-next :wk "next signature"))
-
-  (general-define-key
    :keymaps 'lsp-mode-map
    :states 'normal
    "c w" '(lsp-execute-code-action :wk "code action")
