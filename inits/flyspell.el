@@ -1,10 +1,6 @@
 (use-package flyspell
-  :hook
-  (text-mode . flyspell-mode)
-  (prog-mode . flyspell-prog-mode)
-
-  :config
-  (defun fd-switch-dictionary()
+  :preface
+  (defun my/switch-dictionary()
     "function to cycle between German end English dictionary"
     (interactive)
     (let* ((dic ispell-current-dictionary)
@@ -21,6 +17,11 @@
         (forward-char)
         (not (looking-at "https?\\b"))))) 
 
+  :hook
+  (text-mode . flyspell-mode)
+  (prog-mode . flyspell-prog-mode)
+
+  :config
   (put 'text-mode 'flyspell-mode-predicate 'flyspell-ignore-http-and-https)
   (put 'prog-mode 'flyspell-mode-predicate 'flyspell-ignore-http-and-https)
 
@@ -34,7 +35,7 @@
   :general (general-define-key
             :keymaps 'flyspell-mode-map
             :states 'normal
-            "<f9>" 'fd-switch-dictionary))
+            "<f9>" 'my/switch-dictionary))
 
 (use-package flyspell-correct
   :after flyspell
@@ -42,3 +43,7 @@
             :keymaps 'flyspell-mode-map
             :states 'normal
             "c w" 'flyspell-correct-wrapper))
+
+(use-package flyspell-lazy
+  :after flyspell
+  :hook (flyspell-mode . flyspell-lazy-mode))
