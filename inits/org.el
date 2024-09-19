@@ -1,4 +1,5 @@
 (use-package org
+  :defer t
   :mode (("\\.\\(org\\|org_archive\\)$" . org-mode))
   :custom
   (org-latex-create-formula-image-program 'dvipng)
@@ -16,18 +17,21 @@
   ;; (plist-put org-format-latex-options :scale 1.5)
   )
 
-(eval-after-load "org" '(setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5)))
+;; (eval-after-load "org" '(setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5)))
 
 
 (use-package org-bullets
+  :defer t
   :hook
   (org-mode . (lambda () (org-bullets-mode 1))))
 
 (use-package org-fragtog
+  :defer t
   :hook (org-mode . org-fragtog-mode))
 
 
 (use-package evil-org
+  :defer t
   :after (org evil)
   :hook
   (org-mode . evil-org-mode)

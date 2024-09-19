@@ -1,4 +1,5 @@
 (use-package which-key
+  :defer t
   :commands (which-key-mode)
   :init (which-key-mode)
   :custom

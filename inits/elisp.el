@@ -1,5 +1,6 @@
 (use-package eldoc
   :diminish eldoc-mode
+  :defer t
   :config
   (defun greek-lambda ()
     (font-lock-add-keywords nil `(("\\<lambda\\>"

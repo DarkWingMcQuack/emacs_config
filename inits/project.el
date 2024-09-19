@@ -1,4 +1,5 @@
 (use-package project
+  :defer t
   :general
   (my-leader
    :states 'normal

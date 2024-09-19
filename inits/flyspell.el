@@ -1,4 +1,5 @@
 (use-package flyspell
+  :defer t
   :preface
   (defun my/switch-dictionary()
     "function to cycle between German end English dictionary"

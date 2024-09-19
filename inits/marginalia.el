@@ -6,6 +6,7 @@
   (marginalia-mode))
 
 (use-package nerd-icons)
+
 (use-package nerd-icons-completion
   :after marginalia
   :config

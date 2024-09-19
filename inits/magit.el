@@ -1,4 +1,5 @@
 (use-package magit
+  :defer t
   :general
   (general-define-key
    :keymaps 'magit-mode-map
