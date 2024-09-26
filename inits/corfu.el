@@ -1,15 +1,14 @@
 (use-package corfu
-  :after (savehist cape tempel eglot)
+  :after (savehist cape yasnippet yasnippet-capf eglot)
 
   :preface
   (defun my/eglot-capf ()
     (setq-local completion-at-point-functions
                 (list (cape-capf-super
                        'eglot-completion-at-point
-                       :with 'tempel-complete))))
+                       :with 'yasnippet-capf))))
 
   :config
-  (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster)
   (add-hook 'eglot-managed-mode-hook #'my/eglot-capf)
 
   :custom

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: string_view
+# key: sv
+# --
+std::string_view$0

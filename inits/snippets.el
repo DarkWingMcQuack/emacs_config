@@ -2,6 +2,7 @@
   :defer t
   :hook
   (prog-mode . yas-minor-mode)
+  (text-mode . yas-minor-mode)
 
   :general
   (my-leader 'prog-mode-map
@@ -13,3 +14,7 @@
   (yas-reload-all)
   :custom
   (yas-snippet-dirs '("~/.emacs.d/snippets")))
+
+
+(use-package yasnippet-capf
+  :after (cape yasnippet))
