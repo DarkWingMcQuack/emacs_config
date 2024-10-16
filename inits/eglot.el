@@ -7,6 +7,10 @@
   (c++-mode . eglot-ensure)
   (c-mode . eglot-ensure)
   (scala-mode . eglot-ensure)
+  :config
+  (add-to-list 'eglot-server-programs
+               '((python-mode python-ts-mode)
+                 "basedpyright-langserver" "--stdio"))
 
   :general
   (general-define-key

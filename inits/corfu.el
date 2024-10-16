@@ -14,7 +14,7 @@
   :custom
   (corfu-cycle t)
   (corfu-auto t)
-  (corfu-auto-prefix 0)
+  (corfu-auto-prefix 1)
   (corfu-popupinfo-delay '(0.25 . 0.1))
   (corfu-popupinfo-hide t)
   (corfu-min-width 65)

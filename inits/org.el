@@ -1,33 +1,20 @@
 (use-package org
   :defer t
   :mode (("\\.\\(org\\|org_archive\\)$" . org-mode))
+  :hook (org-mode . org-num-mode)
   :custom
-  (org-latex-create-formula-image-program 'dvipng)
-  (org-log-done t)
-  (org-startup-indented t)
-  (org-startup-truncated nil)
-  (org-startup-with-inline-images t)
-
+  (org-hide-emphasis-markers t)
+  (org-pretty-entities t)
   (org-ellipsis "  ") ;; folding symbol
-  (org-pretty-entities nil)
-  (org-hide-emphasis-markers t) ;; show actually italicized text instead of /italicized text/
+  (org-pretty-entities t)
   (org-fontify-whole-heading-line t)
   (org-fontify-done-headline t)
-  (org-fontify-quote-and-verse-blocks t)
-  ;; (plist-put org-format-latex-options :scale 1.5)
-  )
-
-;; (eval-after-load "org" '(setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5)))
-
-
-(use-package org-bullets
-  :defer t
-  :hook
-  (org-mode . (lambda () (org-bullets-mode 1))))
+  (org-fontify-quote-and-verse-blocks t))
 
 (use-package org-fragtog
   :defer t
   :hook (org-mode . org-fragtog-mode))
+
 
 
 (use-package evil-org
@@ -35,5 +22,19 @@
   :after (org evil)
   :hook
   (org-mode . evil-org-mode)
-  (evil-org-mode . (lambda ()
-                     (evil-org-set-key-theme))))
+  (evil-org-mode . (lambda () (evil-org-set-key-theme))))
+
+(use-package org-modern
+  :defer t
+  :after org
+  :hook
+  (org-agenda-finalize . (lambda () (org-modern-agenda)))
+  (org-mode . (lambda () (org-modern-mode))))
+
+
+(use-package org-modern-indent
+  :defer t
+  :after (org org-modern)
+  :straight (org-modern-indent :type git :host github :repo "jdtsmith/org-modern-indent")
+  :config ; add late to hook
+  (add-hook 'org-mode-hook #'org-modern-indent-mode 90))
