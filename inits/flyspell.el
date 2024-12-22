@@ -27,8 +27,6 @@
   (put 'prog-mode 'flyspell-mode-predicate 'flyspell-ignore-http-and-https)
 
   :custom
-  (flyspell-issue-message-flag nil)
-
   ;; don't correct my strings
   ;; https://emacs.stackexchange.com/questions/31300/can-you-turn-on-flyspell-for-comments-but-not-strings
   (flyspell-prog-text-faces '(font-lock-comment-face font-lock-doc-face))
@@ -44,7 +42,3 @@
             :keymaps 'flyspell-mode-map
             :states 'normal
             "c w" 'flyspell-correct-wrapper))
-
-(use-package flyspell-lazy
-  :after flyspell
-  :hook (flyspell-mode . flyspell-lazy-mode))
