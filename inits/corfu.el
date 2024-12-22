@@ -1,4 +1,7 @@
 (use-package corfu
+  :straight (corfu :files (:defaults "extensions/*")
+                   :includes (corfu-info))
+
   :after (savehist cape yasnippet yasnippet-capf eglot)
 
   :preface
@@ -11,6 +14,7 @@
   :config
   (add-hook 'eglot-managed-mode-hook #'my/eglot-capf)
 
+
   :custom
   (corfu-cycle t)
   (corfu-auto t)
@@ -21,13 +25,15 @@
   (corfu-max-width corfu-min-width)
   (corfu-count 15)
   (corfu-quit-no-match t)
+  (corfu-popupinfo-delay 0)
 
   :init
+  (corfu-popupinfo-mode)
   (global-corfu-mode)
+
 
   :hook
   (corfu-mode . corfu-popupinfo-mode)
-
 
   :general
   (general-define-key

@@ -7,10 +7,12 @@
   (c++-mode . eglot-ensure)
   (c-mode . eglot-ensure)
   (scala-mode . eglot-ensure)
-  :config
-  (add-to-list 'eglot-server-programs
-               '((python-mode python-ts-mode)
-                 "basedpyright-langserver" "--stdio"))
+
+  :init
+  ;; performance
+  (fset #'jsonrpc--log-event #'ignore)
+  (setq eglot-events-buffer-config '(:size 0 :format full))
+  (setq eglot-events-buffer-size 0)
 
   :general
   (general-define-key
@@ -30,6 +32,13 @@
 (use-package consult-eglot
   :defer t
   :after (eglot consult))
+
+(use-package eglot-booster
+  :ensure t
+  :straight (:type git :host github :repo "jdtsmith/eglot-booster")
+  :after eglot
+  :config
+  (eglot-booster-mode))
 
 (use-package eldoc
   :defer t

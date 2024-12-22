@@ -36,6 +36,7 @@
 (load-user-file "inits/flymake.el")
 (load-user-file "inits/flyspell.el")
 (load-user-file "inits/fonts.el")
+(load-user-file "inits/gchm.el")
 (load-user-file "inits/go.el")
 (load-user-file "inits/haskell.el")
 (load-user-file "inits/hl-todo.el")
