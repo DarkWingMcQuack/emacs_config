@@ -19,18 +19,16 @@
   (corfu-cycle t)
   (corfu-auto t)
   (corfu-auto-prefix 1)
-  (corfu-popupinfo-delay '(0.25 . 0.1))
-  (corfu-popupinfo-hide t)
+  ;; (corfu-popupinfo-delay '(0.25 . 0.1))
   (corfu-min-width 65)
   (corfu-max-width corfu-min-width)
   (corfu-count 15)
   (corfu-quit-no-match t)
+  (corfu-popupinfo-hide t)
   (corfu-popupinfo-delay 0)
 
   :init
-  (corfu-popupinfo-mode)
   (global-corfu-mode)
-
 
   :hook
   (corfu-mode . corfu-popupinfo-mode)
