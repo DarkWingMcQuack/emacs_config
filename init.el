@@ -30,7 +30,7 @@
 (load-user-file "inits/dimmer.el")
 (load-user-file "inits/docker.el")
 (load-user-file "inits/drag-stuff.el")
-(load-user-file "inits/eglot.el")
+(load-user-file "inits/lsp.el")
 (load-user-file "inits/elisp.el")
 (load-user-file "inits/file-handling.el")
 (load-user-file "inits/flymake.el")

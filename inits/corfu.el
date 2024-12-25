@@ -6,28 +6,37 @@
 
   :preface
   (defun my/eglot-capf ()
+    (add-to-list 'completion-at-point-functions #'cape-file)
     (setq-local completion-at-point-functions
                 (list (cape-capf-super
                        'eglot-completion-at-point
                        :with 'yasnippet-capf))))
 
+  (defun my/emacs-lisp-capf ()
+    (setq-local completion-at-point-functions
+                (list (cape-capf-super
+                       'elisp-completion-at-point
+                       :with 'yasnippet-capf))))
   :config
   (add-hook 'eglot-managed-mode-hook #'my/eglot-capf)
+  (add-hook 'emacs-lisp-mode-hook #'my/emacs-lisp-capf)
 
 
   :custom
   (corfu-cycle t)
   (corfu-auto t)
   (corfu-auto-prefix 1)
-  ;; (corfu-popupinfo-delay '(0.25 . 0.1))
   (corfu-min-width 65)
   (corfu-max-width corfu-min-width)
   (corfu-count 15)
   (corfu-quit-no-match t)
   (corfu-popupinfo-hide t)
   (corfu-popupinfo-delay 0)
+  (corfu-on-exact-match nil)
+
 
   :init
+  (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster)
   (global-corfu-mode)
 
   :hook
