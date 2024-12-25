@@ -25,9 +25,7 @@
   (my-leader
     :states 'normal
     "TAB" 'eglot-format-buffer
-    "s d" 'eglot-documentation
-    "x r" 'xref-find-references
-    "d"   'eglot-documents))
+    "x r" 'xref-find-references))
 
 (use-package consult-eglot
   :defer t
@@ -43,3 +41,12 @@
 (use-package eldoc
   :defer t
   :hook (prog-mode . eldoc-mode))
+
+
+(use-package eldoc-box
+  :after (eglot eldoc)
+  :defer t
+  :general
+  (my-leader
+    :states 'normal
+    "d" 'eldoc-box-help-at-point))
