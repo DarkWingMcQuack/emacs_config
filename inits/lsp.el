@@ -1,6 +1,16 @@
 (use-package eglot
   :defer t
+  :after (cape corfu yasnippet yasnippet-capf)
+
+  :preface
+  (defun my/eglot-capf ()
+    (setq-local completion-at-point-functions
+                (list (cape-capf-super
+                       'eglot-completion-at-point
+                       :with 'yasnippet-capf))))
+
   :hook
+  (eglot-managed-mode . my/eglot-capf)
   (go-mode . eglot-ensure)
   (rust-mode . eglot-ensure)
   (python-mode . eglot-ensure)
@@ -9,6 +19,9 @@
   (scala-mode . eglot-ensure)
 
   :init
+  ;; cache-busting
+  (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster)
+
   ;; performance
   (fset #'jsonrpc--log-event #'ignore)
   (setq eglot-events-buffer-config '(:size 0 :format full))

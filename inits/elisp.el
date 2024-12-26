@@ -1,6 +1,8 @@
 (use-package eldoc
   :diminish eldoc-mode
+  :after (corfu cape yasnippet yasnippet-capf)
   :defer t
+
   :preface
   (defun greek-lambda ()
     (font-lock-add-keywords nil `(("\\<lambda\\>"
@@ -10,6 +12,13 @@
                                                       ,(make-char 'greek-iso8859-7 107))
                                       nil))))))
 
-  :config
-  (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
-  (add-hook 'emacs-lisp-mode-hook 'greek-lambda))
+  (defun my/emacs-lisp-capf ()
+    (setq-local completion-at-point-functions
+                (list (cape-capf-super
+                       #'elisp-completion-at-point
+                       :with 'yasnippet-capf))))
+
+  :hook
+  (emacs-lisp-mode . my/emacs-lisp-capf)
+  (emacs-lisp-mode . turn-on-eldoc-mode)
+  (emacs-lisp-mode . greek-lambda))
