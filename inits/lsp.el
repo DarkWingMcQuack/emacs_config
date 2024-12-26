@@ -7,7 +7,8 @@
     (setq-local completion-at-point-functions
                 (list (cape-capf-super
                        'eglot-completion-at-point
-                       :with 'yasnippet-capf))))
+                       'cape-file
+                       'yasnippet-capf))))
 
   :hook
   (eglot-managed-mode . my/eglot-capf)
@@ -31,14 +32,15 @@
   (general-define-key
    :keymaps 'eglot-mode-map
    :states 'normal
-   "c w" 'eglot-code-actions
-   "g d" 'eglot-find-declaration
-   "g R" 'eglot-rename)
+   "c w" '(eglot-code-actions :wk "code action")
+   "g d" '(eglot-find-declaration :wk "find declaration")
+   "g R" '(eglot-rename :wk "rename"))
 
   (my-leader
+    :keymaps 'eglot-mode-map
     :states 'normal
-    "TAB" 'eglot-format-buffer
-    "x r" 'xref-find-references))
+    "TAB" '(eglot-format-buffer :wk "format buffer")
+    "x r" '(xref-find-references :wk "find references")))
 
 (use-package consult-eglot
   :defer t

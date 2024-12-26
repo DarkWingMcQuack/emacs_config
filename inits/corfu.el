@@ -1,6 +1,6 @@
 (use-package corfu
   :straight (corfu :files (:defaults "extensions/*")
-                   :includes (corfu-info))
+                   :includes (corfu-info corfu-history))
 
   :custom
   (corfu-cycle t)
@@ -20,6 +20,7 @@
 
   :hook
   (corfu-mode . corfu-popupinfo-mode)
+  (corfu-mode . corfu-history-mode)
 
   :general
   (general-define-key
@@ -35,7 +36,3 @@
   :after corfu
   :config
   (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
-
-(use-package corfu-prescient
-  :after corfu
-  :hook (corfu-mode . corfu-prescient-mode))

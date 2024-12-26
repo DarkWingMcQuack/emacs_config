@@ -1,8 +1,8 @@
 (use-package dirvish
   :defer t
   :init (dirvish-override-dired-mode)
-  :custom
 
+  :custom
   (dirvish-mode-line-format
    '(:left (sort file-time "" file-size symlink) :right (omit yank index)))
 
@@ -12,6 +12,11 @@
   (dirvish-peek-mode)
 
   :general
+
+  (my-leader
+    :states 'normal
+    "f d" '(dirvish :wk "open dirvish"))
+
   (general-define-key
     :keymaps 'dirvish-mode-map
     :states 'normal
