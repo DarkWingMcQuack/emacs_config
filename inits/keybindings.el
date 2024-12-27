@@ -1,4 +1,5 @@
-(use-package crux)
+(use-package crux
+  :defer t)
 
 (general-define-key
  :states 'normal

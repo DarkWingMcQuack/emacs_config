@@ -1,10 +1,10 @@
-
 (use-package whitespace-cleanup-mode
+  :defer 1
   :preface
   (defun untabify-except-makefiles ()
-	"Replace tabs with spaces except in makefiles."
-	(unless (derived-mode-p 'makefile-mode)
-	  (untabify (point-min) (point-max))))
+    "Replace tabs with spaces except in makefiles."
+    (unless (derived-mode-p 'makefile-mode)
+      (untabify (point-min) (point-max))))
   :custom
   (tab-width 4)
   ;; show trailing whitespace

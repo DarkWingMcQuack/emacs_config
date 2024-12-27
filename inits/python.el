@@ -9,8 +9,7 @@
                            ("in" .       #x2208))))))
 
 (use-package pet
-  :config
-  (add-hook 'python-base-mode-hook #'pet-mode -10))
+  :hook (python-base-mode . pet-mode))
 
 (use-package blacken
   :general

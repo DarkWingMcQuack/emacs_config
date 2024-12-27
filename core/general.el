@@ -6,19 +6,20 @@
 
 
 (use-package general
+  :defer t
   :commands (general-define-key
-			 general-override-mode
-			 general-evil-setup
-			 general--simulate-keys)
+             general-override-mode
+             general-evil-setup
+             general--simulate-keys)
   :custom
   (general-override-states '(insert
-							 emacs
-							 hybrid
-							 normal
-							 visual
-							 motion
-							 operator
-							 replace))
+                             emacs
+                             hybrid
+                             normal
+                             visual
+                             motion
+                             operator
+                             replace))
 
   :config
   (general-override-mode)
@@ -26,6 +27,6 @@
   (general-auto-unbind-keys)
 
   (general-create-definer my-leader
-	:states '(motion normal emacs visual)
-	:prefix my-leader-key
-	:non-normal-prefix my-leader-secondary-key))
+    :states '(motion normal emacs visual)
+    :prefix my-leader-key
+    :non-normal-prefix my-leader-secondary-key))

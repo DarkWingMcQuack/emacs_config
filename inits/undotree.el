@@ -1,4 +1,5 @@
 (use-package undo-tree
+  :defer 1
   :init
   (global-undo-tree-mode)
 

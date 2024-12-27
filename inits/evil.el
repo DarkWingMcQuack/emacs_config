@@ -16,6 +16,7 @@
 
 (use-package evil-nerd-commenter
   :after evil
+  :defer 1
   :general
   (general-define-key
    :states 'normal
@@ -23,6 +24,7 @@
 
 (use-package evil-collection
   :after evil
+  :defer 1
   :custom
   (evil-collection-key-blacklist '("SPC" "m"))
   (evil-collection-setup-minibuffer t)
@@ -32,6 +34,7 @@
 
 (use-package evil-matchit
   :after evil
+  :defer 1
 
   :init
   (define-key evil-normal-state-map "m" nil)
@@ -41,8 +44,8 @@
   (global-evil-matchit-mode 1))
 
 (use-package evil-org
-  :ensure t
   :after org
+  :defer 3
   :config
   (add-hook 'org-mode-hook 'evil-org-mode)
   (add-hook 'evil-org-mode-hook

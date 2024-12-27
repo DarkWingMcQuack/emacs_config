@@ -1,4 +1,5 @@
 (use-package modern-cpp-font-lock
+  :defer 1
   :config
   (add-hook 'c-mode-common-hook
             (lambda ()

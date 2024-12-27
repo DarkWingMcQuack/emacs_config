@@ -1,5 +1,6 @@
 (use-package auctex
   :mode ("\\.tex\\'" . latex-mode)
+  :defer t
   :commands (latex-mode LaTeX-mode plain-tex-mode)
   :hook
   ((LaTeX-mode . LaTeX-preview-setup)
