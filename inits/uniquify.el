@@ -1,5 +1,5 @@
 (use-package uniquify
-  :straight (:type built-in)
+  :ensure nil
   :defer 2
   :custom
   (uniquify-buffer-name-style 'forward)

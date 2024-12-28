@@ -48,7 +48,7 @@
 
 (use-package eglot-booster
   :ensure t
-  :straight (:type git :host github :repo "jdtsmith/eglot-booster")
+  :vc (eglot-booster :url "https://github.com/jdtsmith/eglot-booster")
   :after eglot
   :config
   (eglot-booster-mode))

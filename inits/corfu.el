@@ -1,7 +1,5 @@
 (use-package corfu
-  :straight (corfu :files (:defaults "extensions/*")
-                   :includes (corfu-info corfu-history))
-
+  :defer 1
   :custom
   (corfu-cycle t)
   (corfu-auto t)
@@ -34,5 +32,6 @@
 
 (use-package nerd-icons-corfu
   :after corfu
+  :defer 2
   :config
   (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))

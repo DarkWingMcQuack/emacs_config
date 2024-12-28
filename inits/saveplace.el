@@ -1,5 +1,5 @@
 (use-package saveplace
-  :straight (:type built-in)
+  :ensure nil
   :defer t
   :preface
   (defun save-place-reposition ()

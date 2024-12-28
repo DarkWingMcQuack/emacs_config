@@ -1,5 +1,5 @@
 (use-package python-mode
-  :straight (:type built-in)
+  :ensure nil
   :defer t
   :hook
   (python-mode . prettify-symbols-mode)

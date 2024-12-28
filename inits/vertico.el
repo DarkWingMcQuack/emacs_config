@@ -1,29 +1,20 @@
 (use-package vertico
   :custom
   (vertico-count 14)
-  :config
-  (vertico-mode))
 
-(use-package vertico-directory
-  :after vertico
-  :straight nil
-  :load-path "straight/repos/vertico/extensions/"
   :general
   (general-define-key
    :keymaps 'vertico-map
     "RET"  'vertico-directory-enter
     "DEL"  'vertico-directory-delete-char)
-  :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
 
-(use-package vertico-multiform
-  :after vertico
-  :straight nil
-  :load-path "straight/repos/vertico/extensions/"
-  :config (vertico-multiform-mode))
+  :hook
+  (rfn-eshadow-update-overlay . vertico-directory-tidy)
+  (after-init . vertico-mode)
+  (after-init . vertico-multiform-mode))
 
 
 (use-package vertico-posframe
-  :after vertico
   :preface
   (defun posframe-poshandler-frame-top-center-with-offset (info)
     "Posframe position at center top with offset."
@@ -31,10 +22,14 @@
                 (plist-get info :posframe-width))
              2)
           55))
+
+  :hook (after-init . vertico-posframe-mode)
+
   :custom
   (vertico-multiform-commands
    '((consult-line (:not posframe))
      (consult-flycheck (:not posframe))
+     (consult-flymake (:not posframe))
      (consult-buffer (:not posframe))
      (t posframe)))
 
@@ -44,6 +39,4 @@
                                  (right-fringe . 5))
                                vertico-posframe-min-width 160
                                vertico-posframe-width 160
-                               vertico-posframe-height 15)
-  :config
-  (vertico-posframe-mode t))
+                               vertico-posframe-height 15))

@@ -1,7 +1,6 @@
 (use-package which-key
   :defer t
-  :commands (which-key-mode)
-  :init (which-key-mode)
+  :hook (after-init . which-key-mode)
   :custom
   (which-key-idle-delay 0.2)                         ;; Reduce the time before which-key pops up
   (which-key-allow-evil-operators t)                 ;; Show evil keybindings

@@ -35,6 +35,5 @@
 (use-package org-modern-indent
   :defer t
   :after (org org-modern)
-  :straight (org-modern-indent :type git :host github :repo "jdtsmith/org-modern-indent")
-  :config ; add late to hook
-  (add-hook 'org-mode-hook #'org-modern-indent-mode 90))
+  :vc (org-modern-indent :url "http://github.com/jdtsmith/org-modern-indent")
+  :hook (org-mode . org-modern-indent-mode))

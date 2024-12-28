@@ -1,20 +1,28 @@
 (defun local-file-name (file-name)
+  "Return the full path of FILE-NAME relative to `user-emacs-directory`.
+Create any non-existent parent directories along the way."
   (let* ((file-path (expand-file-name file-name user-emacs-directory))
          (parent-dir (file-name-directory file-path)))
     (unless (or (not parent-dir)
                 (file-exists-p parent-dir))
-      (make-directory parent-dir))
+      (make-directory parent-dir t))
     file-path))
 
-;; func which loads file in the init dir
 (defun load-user-file (file)
-  (interactive "f")
-  "Load a file in current user's configuration directory"
-  (load-file (local-file-name file)))
+  "Load FILE from `user-emacs-directory`.
+If FILE doesn’t exist, display a warning message in the *Messages* buffer."
+  (interactive
+   (list (read-file-name "Load user file: " user-emacs-directory nil nil)))
+  (let ((full-path (local-file-name file)))
+    (if (file-exists-p full-path)
+        (load full-path nil 'nomessage)
+      (message "Warning: File `%s` does not exist." full-path))))
+
+
 
 ;;load core
 (load-user-file "core/core-perf.el")
-(load-user-file "core/straight.el")
+(load-user-file "core/packages.el")
 (load-user-file "core/general.el")
 
 (load-user-file "inits/evil.el")

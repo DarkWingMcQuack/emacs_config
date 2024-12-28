@@ -1,4 +1,4 @@
 (use-package subword
   :defer 2
-  :straight (:type built-in)
+  :ensure nil
   :config (global-subword-mode))

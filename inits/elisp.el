@@ -18,7 +18,6 @@
                        'elisp-completion-at-point
                        'yasnippet-capf
                        'cape-file))))
-
   :hook
   (emacs-lisp-mode . my/emacs-lisp-capf)
   (emacs-lisp-mode . turn-on-eldoc-mode)
