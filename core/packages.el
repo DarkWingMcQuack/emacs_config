@@ -1,5 +1,6 @@
 (setq native-comp-async-report-warnings-errors nil
       native-comp-speed 3
+      package-native-compile t
       native-comp-async-jobs-number 15)
 
 (defvar native-comp-deferred-compilation-deny-list nil)

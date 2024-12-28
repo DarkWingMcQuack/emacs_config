@@ -21,7 +21,6 @@ If FILE doesn’t exist, display a warning message in the *Messages* buffer."
 
 
 ;;load core
-(load-user-file "core/core-perf.el")
 (load-user-file "core/packages.el")
 (load-user-file "core/general.el")
 
