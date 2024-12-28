@@ -1,16 +1,19 @@
 (use-package evil
+  :preface
+  (defun color-minibuffer (color)
+    `(lambda ()
+       (when (minibufferp)
+         (face-remap-add-relative 'minibuffer-prompt :foreground ,color))))
+
   :custom
   (evil-want-integration t) ;; This is optional since it's already set to t by default.
   (evil-want-keybinding nil)
   (evil-shift-width 2)
   (evil-default-state 'normal)
+
   :config
-  (defun color-minibuffer (color)
-      `(lambda ()
-          (when (minibufferp)
-              (face-remap-add-relative 'minibuffer-prompt :foreground ,color))))
-  (add-hook 'evil-normal-state-entry-hook   (color-minibuffer "#8000FF"))
-  (add-hook 'evil-insert-state-entry-hook   (color-minibuffer "#FF8000"))
+  (add-hook 'evil-normal-state-entry-hook (color-minibuffer "#8000FF"))
+  (add-hook 'evil-insert-state-entry-hook (color-minibuffer "#FF8000"))
 
   (evil-mode 1))
 
