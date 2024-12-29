@@ -38,6 +38,7 @@
 
 (use-package flyspell-correct
   :after flyspell
+  :commands flyspell-correct-wrapper
   :general (general-define-key
             :keymaps 'flyspell-mode-map
             :states 'normal

@@ -19,7 +19,7 @@
 
 (use-package evil-nerd-commenter
   :after evil
-  :defer 1
+  :commands evilnc-comment-or-uncomment-lines
   :general
   (general-define-key
    :states 'normal
@@ -27,30 +27,24 @@
 
 (use-package evil-collection
   :after evil
-  :defer 1
   :custom
   (evil-collection-key-blacklist '("SPC" "m"))
   (evil-collection-setup-minibuffer t)
   (evil-collection-company-use-tng nil)
-  :config
-  (evil-collection-init))
+  :hook (after-init . evil-collection-init))
 
 (use-package evil-matchit
   :after evil
-  :defer 1
-
+  :commands global-evil-matchit-mode
+  :custom
+  (evilmi-shortcut "m")
   :init
   (define-key evil-normal-state-map "m" nil)
-  (setq evilmi-shortcut "m")
+  :hook (after-init . global-evil-matchit-mode))
 
-  :config
-  (global-evil-matchit-mode 1))
 
 (use-package evil-org
-  :after org
-  :defer 3
-  :config
-  (add-hook 'org-mode-hook 'evil-org-mode)
-  (add-hook 'evil-org-mode-hook
-            (lambda ()
-              (evil-org-set-key-theme))))
+  :after (org evil)
+  :hook
+  (org-mode . evil-org-mode)
+  (evil-org-mode . evil-org-set-key-theme))
