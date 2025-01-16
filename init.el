@@ -56,6 +56,7 @@ If FILE doesn’t exist, display a warning message in the *Messages* buffer."
 (load-user-file "inits/markdown.el")
 (load-user-file "inits/mode-icons.el")
 (load-user-file "inits/modeline.el")
+(load-user-file "inits/nerd-icons.el")
 (load-user-file "inits/multi-cursor.el")
 ;; (load-user-file "inits/my-return.el")
 (load-user-file "inits/orderless.el")

@@ -1,5 +1,4 @@
 (use-package eglot
-  :defer t
   :after (cape corfu yasnippet yasnippet-capf)
 
   :preface

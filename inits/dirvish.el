@@ -1,5 +1,6 @@
 (use-package dirvish
-  :defer t
+  :after nerd-icons
+  :commands dirvish
   :init (dirvish-override-dired-mode)
 
   :custom

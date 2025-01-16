@@ -1,6 +1,4 @@
 (use-package dimmer
-  :if window-system
-  :defer 1
   :preface
   (defun advise-dimmer-config-change-handler ()
     "Advise to only force process if no predicate is truthy."

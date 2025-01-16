@@ -15,6 +15,7 @@
 
 
 (use-package vertico-posframe
+  :after vertico
   :preface
   (defun posframe-poshandler-frame-top-center-with-offset (info)
     "Posframe position at center top with offset."

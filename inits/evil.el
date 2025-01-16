@@ -12,10 +12,9 @@
   (evil-default-state 'normal)
 
   :config
+  (evil-mode 1)
   (add-hook 'evil-normal-state-entry-hook (color-minibuffer "#8000FF"))
-  (add-hook 'evil-insert-state-entry-hook (color-minibuffer "#FF8000"))
-
-  (evil-mode 1))
+  (add-hook 'evil-insert-state-entry-hook (color-minibuffer "#FF8000")))
 
 (use-package evil-nerd-commenter
   :after evil
@@ -35,12 +34,13 @@
 
 (use-package evil-matchit
   :after evil
-  :commands global-evil-matchit-mode
-  :custom
-  (evilmi-shortcut "m")
-  :init
-  (define-key evil-normal-state-map "m" nil)
-  :hook (after-init . global-evil-matchit-mode))
+  :preface
+  (defun my/lazy-em ()
+    (setq evilmi-shortcut "m")
+    (define-key evil-normal-state-map "m" nil)
+    (global-evil-matchit-mode))
+
+  :hook (after-init . my/lazy-em))
 
 
 (use-package evil-org

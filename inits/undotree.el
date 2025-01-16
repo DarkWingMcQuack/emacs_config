@@ -1,7 +1,10 @@
 (use-package undo-tree
-  :defer 1
-  :init
-  (global-undo-tree-mode)
+  :defer t
+  :preface
+  (defun my/lazy-ut () (global-undo-tree-mode))
+
+  :hook
+  (after-init . my/lazy-ut)
 
   :custom
   (undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))

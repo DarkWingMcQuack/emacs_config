@@ -1,5 +1,4 @@
 (use-package corfu
-  :defer 1
   :custom
   (corfu-cycle t)
   (corfu-auto t)
@@ -13,10 +12,8 @@
   (corfu-popupinfo-delay 0)
   (corfu-on-exact-match nil)
 
-  :init
-  (global-corfu-mode)
-
   :hook
+  (after-init . global-corfu-mode)
   (corfu-mode . corfu-popupinfo-mode)
   (corfu-mode . corfu-history-mode)
 
@@ -29,9 +26,3 @@
    "<return>"     '(corfu-insert :wk "expand completion candidate")
    "S-TAB"     '(corfu-previous :wk "previous completion candidates")
    "<backtab>"     '(corfu-previous :wk "previous completion candidates")))
-
-(use-package nerd-icons-corfu
-  :after corfu
-  :defer 2
-  :config
-  (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))

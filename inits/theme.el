@@ -1,4 +1,6 @@
 (use-package doom-themes
+  :defer t
+
   :preface
   (defun my/doom-theme-setup ()
     (load-theme 'doom-tomorrow-night t))

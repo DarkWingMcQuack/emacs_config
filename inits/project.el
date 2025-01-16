@@ -1,5 +1,5 @@
 (use-package project
-  :defer t
+  :commands (project-find-file project-switch-project)
   :general
   (my-leader
    :states 'normal

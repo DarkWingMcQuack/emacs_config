@@ -1,3 +1,3 @@
 (use-package mode-icons
   :defer t
-  :config (mode-icons-mode))
+  :hook (after-init . mode-icons-mode))
