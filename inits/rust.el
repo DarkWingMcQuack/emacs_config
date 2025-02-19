@@ -1,2 +1,1 @@
-(use-package rust-mode
-   :defer t)
+(use-package rust-mode :defer t)

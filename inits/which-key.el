@@ -1,5 +1,4 @@
 (use-package which-key
-  :defer t
   :hook (after-init . which-key-mode)
   :custom
   (which-key-idle-delay 0.2)                         ;; Reduce the time before which-key pops up

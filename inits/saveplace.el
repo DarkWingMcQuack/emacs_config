@@ -1,6 +1,4 @@
 (use-package saveplace
-  :ensure nil
-  :defer t
   :preface
   (defun save-place-reposition ()
     "Force windows to recenter current line (with saved position)."

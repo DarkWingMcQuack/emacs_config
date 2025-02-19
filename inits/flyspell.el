@@ -1,5 +1,4 @@
 (use-package flyspell
-  :defer t
   :preface
   (defun my/switch-dictionary()
     "function to cycle between German end English dictionary"
@@ -38,7 +37,6 @@
 
 (use-package flyspell-correct
   :after flyspell
-  :commands flyspell-correct-wrapper
   :general (general-define-key
             :keymaps 'flyspell-mode-map
             :states 'normal

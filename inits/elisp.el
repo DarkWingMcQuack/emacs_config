@@ -1,8 +1,5 @@
 (use-package eldoc
   :diminish eldoc-mode
-  :after (corfu cape yasnippet yasnippet-capf)
-  :defer t
-
   :preface
   (defun my/greek-lambda ()
     (font-lock-add-keywords nil `(("\\<lambda\\>"

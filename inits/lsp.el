@@ -1,6 +1,4 @@
 (use-package eglot
-  :after (cape corfu yasnippet yasnippet-capf)
-
   :preface
   (defun my/eglot-capf ()
     (setq-local completion-at-point-functions

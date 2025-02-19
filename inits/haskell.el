@@ -1,5 +1,4 @@
 (use-package haskell-mode
-  :defer t
   :preface
   (defvar haskell-prettify-symbols-alist
     '(("::"     . ?∷)

@@ -1,5 +1,4 @@
 (use-package hl-todo
-  :defer t
   :hook (prog-mode . hl-todo-mode)
   :custom
   (hl-todo-highlight-punctuation ":")

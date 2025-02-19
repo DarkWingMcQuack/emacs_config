@@ -1,2 +1,1 @@
-(use-package go-mode
-  :defer t)
+(use-package go-mode :defer t)

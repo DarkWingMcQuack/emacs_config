@@ -1,10 +1,4 @@
 (use-package consult
-  :commands (consult-flymake
-             consult-project-buffer
-             consult-buffer
-             consult-yank-pop
-             consult-line
-             consult-goto-line)
   :general
   (my-leader
     "s e" '(consult-flymake :wk "show errors")

@@ -1,2 +1,1 @@
-(use-package dockerfile-mode
-  :defer t)
+(use-package dockerfile-mode)

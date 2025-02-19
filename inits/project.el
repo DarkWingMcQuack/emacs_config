@@ -1,5 +1,4 @@
 (use-package project
-  :commands (project-find-file project-switch-project)
   :general
   (my-leader
    :states 'normal

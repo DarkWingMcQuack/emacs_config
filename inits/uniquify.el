@@ -1,6 +1,4 @@
 (use-package uniquify
-  :ensure nil
-  :defer 2
   :custom
   (uniquify-buffer-name-style 'forward)
   (uniquify-separator ":")

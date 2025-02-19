@@ -1,6 +1,4 @@
 (use-package magit
-  :commands (magit-status magit-push magit-file-delete magit-todos-list)
-
   :preface
   (defun my/magit-bury-buffer () (magit-mode-bury-buffer t))
 
@@ -26,7 +24,6 @@
 
 (use-package magit-todos
   :after magit
-  :commands (magit-status magit-todos-list)
   :hook (magit-mode . magit-todos-mode)
   :general
   (my-leader

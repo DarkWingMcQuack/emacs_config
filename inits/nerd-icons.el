@@ -1,7 +1,6 @@
-(use-package nerd-icons :defer t)
+(use-package nerd-icons)
 
 (use-package nerd-icons-completion
-  :defer t
   :after marginalia
   :preface
   (defun my/lazy-ni-completion () (nerd-icons-completion-mode))

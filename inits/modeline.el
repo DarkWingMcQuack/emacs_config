@@ -1,7 +1,5 @@
 (use-package doom-modeline
   :hook (after-init . doom-modeline-mode)
-  :commands doom-modeline-mode
-  ;; :defer t
   :custom
   (doom-modeline-modal-modern-icon t)
   (doom-modeline-height 25)
