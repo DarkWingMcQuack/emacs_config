@@ -18,7 +18,8 @@
 
   :init
   ;; cache-busting
-  (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster)
+  ;; disable this because it fucks up the completion
+  ;; (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster)
 
   ;; performance
   (fset #'jsonrpc--log-event #'ignore)
