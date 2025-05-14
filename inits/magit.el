@@ -1,6 +1,4 @@
-(use-package transient)
 (use-package magit
-  :after transient
   :preface
   (defun my/magit-bury-buffer () (magit-mode-bury-buffer t))
 
@@ -26,6 +24,7 @@
 
 (use-package magit-todos
   :after magit
+  :defer t
   :hook (magit-mode . magit-todos-mode)
   :general
   (my-leader
