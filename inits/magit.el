@@ -1,3 +1,5 @@
+(use-package transient)
+
 (use-package magit
   :preface
   (defun my/magit-bury-buffer () (magit-mode-bury-buffer t))
