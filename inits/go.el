@@ -1,4 +1,5 @@
 (use-package go-mode
+  :defer t
   :after project eglot
   :preface
   (defun project-find-go-module (dir)

@@ -1,5 +1,6 @@
 (use-package eglot
   :after (cape corfu yasnippet-capf flymake)
+  :defer t
 
   :preface
   (defun my/eglot-capf ()
@@ -11,6 +12,7 @@
 
   :hook
   (eglot-managed-mode . my/eglot-capf)
+
   :init
   ;; performance
   (fset #'jsonrpc--log-event #'ignore)
@@ -40,14 +42,3 @@
 ;;            :repo "jdtsmith/eglot-booster")
 ;;   :after eglot
 ;;   :hook (elpaca-after-init . eglot-booster-mode))
-
-(use-package eldoc
-  :hook (prog-mode . eldoc-mode))
-
-
-(use-package eldoc-box
-  :after (eglot eldoc)
-  :general
-  (my-leader
-    :states 'normal
-    "d" 'eldoc-box-help-at-point))
