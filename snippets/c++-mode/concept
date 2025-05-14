@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: C++23 Concept
+# key: concept
+# --
+template <typename ${1:T}>
+concept ${2:ConceptName} = requires(${1:T} a) {
+    { ${3:expression} } -> std::${4:constraint};
+};
