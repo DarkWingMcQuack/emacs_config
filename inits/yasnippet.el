@@ -13,7 +13,3 @@
   (yas-reload-all)
   :custom
   (yas-snippet-dirs '("~/.emacs.d/snippets")))
-
-
-(use-package yasnippet-capf
-  :after cape yasnippet)

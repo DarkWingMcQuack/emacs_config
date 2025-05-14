@@ -18,7 +18,7 @@
 
 (load-user-file "inits/centered-cursor.el")
 (load-user-file "inits/consult.el")
-(load-user-file "inits/corfu.el")
+(load-user-file "inits/company.el")
 (load-user-file "inits/cpp.el")
 (load-user-file "inits/crux.el")
 (load-user-file "inits/dashboard.el")

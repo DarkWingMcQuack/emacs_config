@@ -1,6 +1,5 @@
 (use-package emacs-lisp-mode
   :ensure nil
-  :after cape yasnippet-capf
   :defer t
   :preface
   (defun my/elisp-format-buffer ()
@@ -11,13 +10,6 @@
       (untabify    (point-min) (point-max))
       (delete-trailing-whitespace)))
 
-  (defun my/emacs-lisp-capf ()
-    (setq-local completion-at-point-functions
-                (list (cape-capf-super
-                       'elisp-completion-at-point
-                       'yasnippet-capf
-                       'cape-file))))
-
   (defun my/greek-lambda ()
     (font-lock-add-keywords nil `(("\\<lambda\\>"
                                    (0
@@ -27,7 +19,6 @@
                                       nil))))))
 
   :hook
-  (emacs-lisp-mode . my/emacs-lisp-capf)
   (emacs-lisp-mode . my/greek-lambda)
 
   :general

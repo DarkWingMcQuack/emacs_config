@@ -25,8 +25,9 @@
 
   :custom
   (c-ts-mode-indent-offset 4)
+
   :init
-  ;; Remap the standard C/C++ modes
+  ;; remap the standard C/C++ modes
   (add-to-list 'major-mode-remap-alist '(c-mode . c-ts-mode))
   (add-to-list 'major-mode-remap-alist '(c++-mode . c++-ts-mode))
   (add-to-list 'major-mode-remap-alist '(c-or-c++-mode . c-or-c++-ts-mode))
@@ -34,9 +35,4 @@
   :hook
   (c++-ts-mode . eglot-ensure)
   (c-ts-mode . eglot-ensure)
-  (c++-ts-mode . pretty-for-add-keywords)
-
-  (c++-ts-mode . (lambda () (setq-default c-basic-offset 4
-                                     c-indent-level 4
-                                     tab-width 4
-                                     indent-tabs-mode nil))))
+  (c++-ts-mode . pretty-for-add-keywords))

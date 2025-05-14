@@ -1,19 +1,9 @@
 (use-package eglot
-  :after (cape corfu yasnippet-capf flymake)
+  :after flymake
   :defer t
+  :config
+  (add-to-list 'eglot-stay-out-of 'company-backends)
 
-  :preface
-  (defun my/eglot-capf ()
-    (setq-local completion-at-point-functions
-                (list (cape-capf-super
-                       'eglot-completion-at-point
-                       'cape-file
-                       'yasnippet-capf))))
-
-  :hook
-  (eglot-managed-mode . my/eglot-capf)
-
-  :init
   ;; performance
   (fset #'jsonrpc--log-event #'ignore)
   (setq eglot-events-buffer-config '(:size 0 :format full))
