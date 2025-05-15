@@ -26,4 +26,4 @@
     :keymaps 'emacs-lisp-mode-map
     :states 'normal
     "TAB" '(my/elisp-format-buffer :wk "format elisp buffer")
-    "b x" '(eval-buffer :wk "execute elisp buffer")))
+    "b x" '(eval-buffer            :wk "execute elisp buffer")))
