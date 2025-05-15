@@ -22,6 +22,7 @@
 (load-user-file "inits/consult.el")
 (load-user-file "inits/cpp.el")
 (load-user-file "inits/crux.el")
+(load-user-file "inits/markdown.el")
 (load-user-file "inits/dashboard.el")
 (load-user-file "inits/dimmer.el")
 (load-user-file "inits/dirvish.el")

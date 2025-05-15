@@ -1,11 +1,11 @@
 (use-package eldoc
   :ensure nil
-  :defer t
   :hook (prog-mode . eldoc-mode))
 
 (use-package eldoc-box
-  :defer t
-  :commands eldoc-box-help-at-point
+  ;; wait for https://github.com/casouri/eldoc-box/issues/128
+  ;; to clarify this behaviour
+  ;; :commands eldoc-box-help-at-point
   :general
   (my-leader
     :states 'normal
