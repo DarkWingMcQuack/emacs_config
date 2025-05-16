@@ -31,4 +31,4 @@
 (use-package company-statistics
   :after company
   :hook
-  (elpaca-after-init . company-statistics-mode))
+  (company-mode . company-statistics-mode))
