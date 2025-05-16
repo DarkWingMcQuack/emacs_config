@@ -31,6 +31,9 @@
   ;; https://emacs.stackexchange.com/questions/31300/can-you-turn-on-flyspell-for-comments-but-not-strings
   (flyspell-prog-text-faces '(font-lock-comment-face font-lock-doc-face))
 
+  (ispell-program-name "aspell")
+  (ispell-extra-args '("--sug-mode=ultra"))
+
   :general (general-define-key
             :keymaps 'flyspell-mode-map
             :states 'normal
