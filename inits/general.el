@@ -25,11 +25,14 @@
     "q"   '(delete-window :wk "delete current window"))
 
   (my-leader
-    "b" '(:ignore t :wk "buffers")
+    "b" '(:ignore t :wk "buffers/bookmarks")
     "p" '(:ignore t :wk "project")
+    "q" '(:ignore t :wk "quit")
     "f" '(:ignore t :wk "files")
     "g" '(:ignore t :wk "git")
     "o" '(:ignore t :wk "org")
+    "s" '(:ignore t :wk "snippets/marks")
+    "r" '(:ignore t :wk "regex")
     "w" '(:ignore t :wk "windows"))
 
   (my-leader
