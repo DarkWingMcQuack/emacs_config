@@ -18,10 +18,10 @@
     "f d" '(dirvish :wk "open dirvish"))
 
   (general-define-key
-    :keymaps 'dirvish-mode-map
-    :states 'normal
-    :packages '(dired dirvish)
-    "h" 'dired-up-directory
-    "l" 'dired-find-file
-    "q" 'dirvish-quit
-    "TAB" 'dirvish-subtree-toggle))
+   :keymaps 'dirvish-mode-map
+   :states 'normal
+   :packages '(dired dirvish)
+   "h" 'dired-up-directory
+   "l" 'dired-find-file
+   "q" 'dirvish-quit
+   "TAB" 'dirvish-subtree-toggle))

@@ -17,7 +17,6 @@
 
 (use-package evil-nerd-commenter
   :after evil
-  :defer t
   :commands evilnc-comment-or-uncomment-lines
   :general
   (general-define-key
@@ -34,7 +33,6 @@
 
 (use-package evil-matchit
   :after evil
-  :defer t
   :commands evilmi-jump-items
   :custom
   (evilmi-shortcut "m")

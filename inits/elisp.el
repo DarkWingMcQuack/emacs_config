@@ -1,6 +1,5 @@
 (use-package emacs-lisp-mode
   :ensure nil
-  :defer t
   :preface
   (defun my/elisp-format-buffer ()
     "Indent, untabify, and strip trailing whitespace in the whole buffer."
