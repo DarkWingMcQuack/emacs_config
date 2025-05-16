@@ -31,3 +31,11 @@
   :general
   (my-leader
     "g t" '(magit-todos-list :wk "show todos")))
+
+(use-package git-modes
+  :mode ("\\.gitignore\\'" "\\.dockerignore\\'" "\\.eleventyignore\\'")
+  :config
+  (add-to-list 'auto-mode-alist
+               (cons "/.dockerignore\\'" 'gitignore-mode))
+  (add-to-list 'auto-mode-alist
+               (cons "/.eleventyignore\\'" 'gitignore-mode)))
