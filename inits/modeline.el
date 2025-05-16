@@ -19,6 +19,6 @@
   (doom-modeline-lsp t)
   (doom-modeline-buffer-encoding nil)
   (doom-modeline-region-info t)
-  (doom-modeline-project-detection 'project)
+  (doom-modeline-project-detection 'auto)
   (doom-modeline-project-icon t)
   (doom-modeline-workspace-name t))
