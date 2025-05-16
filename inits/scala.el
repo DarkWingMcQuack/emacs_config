@@ -1,5 +1,4 @@
 (use-package scala-ts-mode
-  :defer t
   :after eglot
   :mode "\\(scala\\|sbt\\|mill\\)$"
   :config

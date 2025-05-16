@@ -6,7 +6,7 @@
   (LaTeX-mode . eglot-ensure)
   :config
   ;; Format math as a Latex string with Calc
-  (defun latex-math-from-calc ()
+  (defun my/latex-calc ()
     "Evaluate `calc' on the contents of line at point."
     (interactive)
     (cond ((region-active-p)

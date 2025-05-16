@@ -20,10 +20,6 @@
 
 
 (use-package vertico-posframe
-  ;; :ensure (vertico-posframe
-  ;;          :host github
-  ;;          :repo "tumashu/vertico-posframe"
-  ;;          :ref  "cfce055")
   :after vertico
   :preface
   (defun posframe-poshandler-frame-top-center-with-offset (info)

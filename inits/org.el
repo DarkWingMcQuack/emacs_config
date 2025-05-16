@@ -12,12 +12,10 @@
   (org-fontify-quote-and-verse-blocks t))
 
 (use-package org-fragtog
-  :defer t
   :after org
   :hook (org-mode . org-fragtog-mode))
 
 (use-package org-modern
-  :defer t
   :after org
   :hook
   (org-agenda-finalize . (lambda () (org-modern-agenda)))
@@ -25,7 +23,6 @@
 
 
 (use-package org-modern-indent
-  :defer t
   :ensure(org-modern-indent
           :host github
           :repo "jdtsmith/org-modern-indent")

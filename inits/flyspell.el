@@ -45,3 +45,6 @@
             :keymaps 'flyspell-mode-map
             :states 'normal
             "c w" 'flyspell-correct-wrapper))
+
+(use-package flyspell-correct-popup
+  :after flyspell-correct)
