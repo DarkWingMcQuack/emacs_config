@@ -1,6 +1,7 @@
 (use-package doom-modeline
-  :hook (elpaca-after-init . doom-modeline-mode)
-  :hook (doom-modeline-mode  . column-number-mode)
+  :hook
+  (elpaca-after-init . doom-modeline-mode)
+  (doom-modeline-mode  . column-number-mode)
 
   :custom
   (doom-modeline-height 25)
