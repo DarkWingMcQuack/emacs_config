@@ -6,6 +6,11 @@
   (eshell-mode . company-mode)
 
   :custom
+  (company-format-margin-function #'company-vscode-dark-icons-margin)
+
+  (company-tooltip-maximum-width 80)
+  (company-tooltip-minimum-width 80)
+
   (company-backends '((company-capf company-files company-yasnippet)))
   (company-selection-wrap-around t)
   (company-idle-delay 0.1)
