@@ -32,6 +32,7 @@
 (load-user-file "inits/execpfs.el")
 (load-user-file "inits/flutter.el")
 (load-user-file "inits/flymake.el")
+(load-user-file "inits/file-handling.el")
 (load-user-file "inits/flyspell.el")
 (load-user-file "inits/fonts.el")
 (load-user-file "inits/gcmh.el")

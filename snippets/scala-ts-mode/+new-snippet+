@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: scala for comprehension
+# key: for
+# --
+for
+  ${1:x} <- ${2:y}
+yield ${3:()}
