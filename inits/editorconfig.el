@@ -1,2 +1,4 @@
 (use-package editorconfig
-  :hook (elpa-after-init . editorconfig-mode))
+  :hook
+  (prog-mode . editorconfig-mode)
+  (text-mode . editorconfig-mode))
