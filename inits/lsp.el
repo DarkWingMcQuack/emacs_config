@@ -6,8 +6,15 @@
   (add-to-list 'eglot-stay-out-of 'company-backends)
   ;; performance
   (fset #'jsonrpc--log-event #'ignore)
+
+  ;; add servers which eglot does not know of
   (add-to-list 'eglot-server-programs
                `(scala-ts-mode . ("metals" "-Dmetals.client=emacs")))
+
+  (add-to-list 'eglot-server-programs
+               '(lean4-mode . ("lake" "serve")))
+
+
 
   :custom
   (eglot-events-buffer-config '(:size 0 :format full))
