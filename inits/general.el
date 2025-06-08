@@ -57,7 +57,7 @@
     "b s" '(bookmark-save   :wk "save bookmarks")
 
     "s a" '(set-mark-command          :wk "set mark here")
-    "s e" '(exchange-point-and-mark   :wk "exchange mark and point")
+    "s x" '(exchange-point-and-mark   :wk "exchange mark and point")
     "s s" '(consult-mark              :wk "show mark-ring")
 
     "f f" '(find-file   :wk "find file")
