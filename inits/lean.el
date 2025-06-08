@@ -1,14 +1,23 @@
+;; unfortunatly lean4-mode currently can only be used with lsp-mode instead of eglot
+;; there is a current refactor to fix this, but for now we need lsp mode :(
+
+(use-package lsp-mode
+  :custom
+  (lsp-inlay-hint-enable nil)
+  (lsp-headerline-breadcrumb-enable nil)
+  :general
+  (my-leader
+    :keymaps 'lsp-mode-map
+    :states 'normal
+    "g d"  '(lsp-find-definition       :wk "goto definition")
+    "g r"  '(lsp-find-references       :wk "find references")
+    "g D"  '(lsp-find-declaration      :wk "find declaration")
+    "g R"  '(lsp-rename                :wk "rename")
+    "c w"  '(lsp-execute-code-action   :wk "code action")
+    "TAB"  '(lsp-format-buffer         :wk "format buffer")))
+
 (use-package lean4-mode
-  :preface
-  (defun my/lean4-scratch-buffer ()
-    "Create a temp Lean 4 file in $TMP, open it, and enable LSP."
-    (interactive)
-    (let* ((file (make-temp-file "lean4-scratch-" nil ".lean"))
-           (buf (find-file file)))
-      (with-current-buffer buf
-        (lean4-mode)
-        (eglot-ensure)
-        (message "Lean4 scratch buffer ready: %s" file))))
+  :after lsp-mode
 
   :ensure (lean4-mode
            :host github
@@ -16,8 +25,6 @@
            :files ("*.el" "data"))
 
   :mode "\\.lean4?\\'"
-
-  :hook (lean4-mode . eglot-ensure)
   :general
   (my-leader
     :keymaps 'lean4-mode-map

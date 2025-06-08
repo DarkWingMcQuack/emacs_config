@@ -11,11 +11,6 @@
   (add-to-list 'eglot-server-programs
                `(scala-ts-mode . ("metals" "-Dmetals.client=emacs")))
 
-  (add-to-list 'eglot-server-programs
-               '(lean4-mode . ("lake" "serve")))
-
-
-
   :custom
   (eglot-events-buffer-config '(:size 0 :format full))
   (eglot-events-buffer-size 0)
