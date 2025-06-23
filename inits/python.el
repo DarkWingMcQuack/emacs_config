@@ -1,16 +1,15 @@
-(use-package python-mode
-  :after eglot
-  :hook
-  (python-mode . eglot-ensure)
-  (python-mode . prettify-symbols-mode)
-  (python-mode . (lambda ()
-                   (mapc (lambda (pair) (push pair prettify-symbols-alist))
-                         '(;; Syntax
-                           ("in" .       #x2208))))))
+(use-package python
+  :ensure nil
+  :config
+  (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode))
 
-(use-package pet
-  :after python
-  :hook (python-base-mode . pet-mode))
+  :hook
+  (python-ts-mode . eglot-ensure)
+  (python-ts-mode . prettify-symbols-mode)
+  (python-ts-mode . (lambda ()
+                      (mapc (lambda (pair) (push pair prettify-symbols-alist))
+                            '(;; Syntax
+                              ("in" .       #x2208))))))
 
 (use-package blacken
   :after python
