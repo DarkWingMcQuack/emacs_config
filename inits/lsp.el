@@ -12,6 +12,7 @@
                `(scala-ts-mode . ("metals" "-Dmetals.client=emacs")))
 
   (add-to-list 'eglot-server-programs `(python-ts-mode . ("pylsp")))
+  (add-to-list 'eglot-server-programs `(c++-ts-mode . ("clangd")))
 
   :custom
   (eglot-events-buffer-config '(:size 0 :format full))

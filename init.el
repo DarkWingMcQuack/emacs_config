@@ -40,6 +40,7 @@
 (load-user-file "inits/gcmh.el")
 (load-user-file "inits/git-gutter.el")
 (load-user-file "inits/hl-todo.el")
+(load-user-file "inits/java.el")
 (load-user-file "inits/latex.el")
 (load-user-file "inits/lean.el")
 (load-user-file "inits/ligatures.el")
