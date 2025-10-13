@@ -2,8 +2,12 @@
   :preface
   (defun untabify-except-makefiles ()
     "Replace tabs with spaces except in makefiles."
-    (unless (derived-mode-p 'makefile-mode)
+    (unless (derived-mode-p 'makefile-mode
+                            'makefile-gmake-mode
+                            'makefile-bsdmake-mode
+                            'makefile-automake-mode)
       (untabify (point-min) (point-max))))
+
 
   :custom
   (tab-width 4)

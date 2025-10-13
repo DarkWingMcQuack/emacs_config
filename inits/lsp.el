@@ -5,7 +5,7 @@
   ;; stay out of my company backends you fuck
   (add-to-list 'eglot-stay-out-of 'company-backends)
   ;; performance
-  (fset #'jsonrpc--log-event #'ignore)
+  ;; (fset #'jsonrpc--log-event #'ignore)
 
   ;; add servers which eglot does not know of
   (add-to-list 'eglot-server-programs
@@ -14,9 +14,10 @@
   (add-to-list 'eglot-server-programs `(python-ts-mode . ("pylsp")))
   (add-to-list 'eglot-server-programs `(c++-ts-mode . ("clangd")))
 
-  :custom
-  (eglot-events-buffer-config '(:size 0 :format full))
-  (eglot-events-buffer-size 0)
+  ;; :custom
+;; (setq eglot-events-buffer-size 0) ; keep full log
+  ;; (eglot-events-buffer-config '(:size 0 :format full))
+  ;; (eglot-events-buffer-size 0)
 
   :general
 
