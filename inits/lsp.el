@@ -13,9 +13,11 @@
 
   (add-to-list 'eglot-server-programs `(python-ts-mode . ("pylsp")))
   (add-to-list 'eglot-server-programs `(c++-ts-mode . ("clangd")))
+  (add-to-list 'eglot-server-programs `(latex-mode . ("texlab")))
+  (add-to-list 'eglot-server-programs `(LaTeX-mode . ("texlab")))
 
   ;; :custom
-;; (setq eglot-events-buffer-size 0) ; keep full log
+  ;; (setq eglot-events-buffer-size 0) ; keep full log
   ;; (eglot-events-buffer-config '(:size 0 :format full))
   ;; (eglot-events-buffer-size 0)
 
