@@ -17,3 +17,12 @@
   (my-leader
     :states 'normal
     "l w" '(mw-thesaurus-lookup-at-point  :wk "lookup word")))
+
+(use-package academic-phrases
+  :ensure(academic-phrases :host github :repo "nashamri/academic-phrases")
+  :commands (academic-phrases academic-phrases-by-section)
+
+  :general
+  (my-leader
+    :states 'normal
+    "l p" '(academic-phrases :wk "lookup word")))
