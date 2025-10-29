@@ -74,6 +74,7 @@
 (load-user-file "inits/undo.el")
 (load-user-file "inits/vertico.el")
 (load-user-file "inits/which-key.el")
+(load-user-file "inits/writing.el")
 (load-user-file "inits/ws-cleanup.el")
 (load-user-file "inits/yaml.el")
 (load-user-file "inits/yasnippet.el")
