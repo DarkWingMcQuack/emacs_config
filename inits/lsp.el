@@ -4,8 +4,11 @@
   :config
   ;; stay out of my company backends you fuck
   (add-to-list 'eglot-stay-out-of 'company-backends)
-  ;; performance
-  ;; (fset #'jsonrpc--log-event #'ignore)
+  (add-to-list 'eglot-stay-out-of 'flymake)
+  (add-hook 'eglot--managed-mode-hook
+            (lambda () (add-hook 'flymake-diagnostic-functions 'eglot-flymake-backend nil t)))
+
+
 
   ;; add servers which eglot does not know of
   (add-to-list 'eglot-server-programs
@@ -13,7 +16,6 @@
 
   (add-to-list 'eglot-server-programs `(python-ts-mode . ("pylsp")))
   (add-to-list 'eglot-server-programs `(c++-ts-mode . ("clangd")))
-  (add-to-list 'eglot-server-programs `(latex-mode . ("texlab")))
   (add-to-list 'eglot-server-programs `(LaTeX-mode . ("texlab")))
 
   ;; :custom
