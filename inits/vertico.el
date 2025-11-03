@@ -1,9 +1,4 @@
 (use-package vertico
-  :ensure (vertico
-           :host github
-           :repo "minad/vertico"
-           :ref  "026a81a")
-
   :custom
   (vertico-count 14)
 
