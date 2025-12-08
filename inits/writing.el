@@ -31,7 +31,6 @@
 
 (use-package flymake-languagetool
   :hook
-  (text-mode       . flymake-languagetool-load)
   (latex-mode      . flymake-languagetool-load)
   (LaTeX-mode      . flymake-languagetool-load)
   (org-mode        . flymake-languagetool-load)

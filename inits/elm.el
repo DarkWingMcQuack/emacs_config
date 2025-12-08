@@ -13,5 +13,5 @@
   :general
   (my-leader
     :states 'normal
-    :keymaps '(elm-mode-map eglot-mode-map)
+    :keymaps '(elm-mode-map)
     "TAB" 'elm-format-buffer))

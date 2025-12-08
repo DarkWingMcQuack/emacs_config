@@ -1,6 +1,8 @@
 (use-package eglot
-  :after flymake
-  :commands eglot eglot-ensure
+  :ensure nil
+
+  ;; :after flymake
+  ;; :commands eglot eglot-ensure
   :config
   ;; stay out of my company backends you fuck
   (add-to-list 'eglot-stay-out-of 'company-backends)
