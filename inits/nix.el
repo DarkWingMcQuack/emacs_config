@@ -1,3 +1,3 @@
 (use-package nix-mode
   :mode "\\.nix\\'"
-  :hook (nix-mode . eglot-ensure))
+  :hook (nix-mode . lsp-defered))

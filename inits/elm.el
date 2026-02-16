@@ -1,6 +1,6 @@
 (use-package elm-mode
   :hook
-  (elm-mode . eglot-ensure)
+  (elm-mode . lsp-deferred)
   (elm-mode . prettify-symbols-mode)
   (elm-mode . (lambda ()
                 (mapc (lambda (pair) (push pair prettify-symbols-alist))

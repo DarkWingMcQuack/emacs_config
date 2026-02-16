@@ -1,7 +1,7 @@
 (use-package dart-mode
   :mode "\\.dart\\'"
   :hook
-  (dart-mode . eglot-ensure))
+  (dart-mode . lsp-deferred))
 
 
 (use-package flutter

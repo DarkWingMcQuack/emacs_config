@@ -33,6 +33,6 @@
   (add-to-list 'major-mode-remap-alist '(c-or-c++-mode . c-or-c++-ts-mode))
 
   :hook
-  (c++-ts-mode . eglot-ensure)
-  (c-ts-mode . eglot-ensure)
+  (c++-ts-mode . lsp-deferred)
+  (c-ts-mode . lsp-deferred)
   (c++-ts-mode . pretty-for-add-keywords))

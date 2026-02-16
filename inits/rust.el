@@ -2,4 +2,4 @@
   :defer t
   :after eglot
   :hook
-  (rust-mode . eglot-ensure))
+  (rust-mode . lsp-deferred))

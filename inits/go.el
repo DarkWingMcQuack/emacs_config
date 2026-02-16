@@ -10,7 +10,7 @@
     (cdr project))
 
   :hook
-  (go-mode . eglot-ensure)
+  (go-mode . lsp-deferred)
 
   :init
   (add-hook 'project-find-functions #'project-find-go-module))

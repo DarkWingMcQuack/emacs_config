@@ -4,7 +4,7 @@
   (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode))
 
   :hook
-  (python-ts-mode . eglot-ensure)
+  (python-ts-mode . lsp-deferred)
   (python-ts-mode . prettify-symbols-mode)
   (python-ts-mode . (lambda ()
                       (mapc (lambda (pair) (push pair prettify-symbols-alist))

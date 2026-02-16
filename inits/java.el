@@ -9,7 +9,7 @@
           '(:java (:configuration (:updateBuildConfiguration "automatic")))))
 
   :hook
-  (java-ts-mode . eglot-ensure))
+  (java-ts-mode . lsp-deferred))
 
 (use-package jarchive
   :ensure t
