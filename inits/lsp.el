@@ -18,6 +18,11 @@
    "g d" '(lsp-find-declaration    :wk "find declaration")
    "g R" '(lsp-rename              :wk "rename"))
 
+  (general-define-key
+   :states 'normal
+   "g f" '(xref-go-forward :wk "xref go forward")
+   "g b" '(xref-go-back :wk "xref go back"))
+
   (my-leader
     :keymaps 'lsp-mode-map
     :states 'normal
