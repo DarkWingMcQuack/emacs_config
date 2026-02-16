@@ -5,6 +5,7 @@
   (lsp-completion-provider :capf)
   (lsp-diagnostics-provider :flymake)
   (lsp-flymake-live-reporting t)
+  (lsp-enable-on-type-formatting nil)
 
   (lsp-headerline-breadcrumb-enable nil)
   (lsp-use-plists t)
