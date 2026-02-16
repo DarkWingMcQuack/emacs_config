@@ -14,7 +14,7 @@
 
   ;; add servers which eglot does not know of
   (add-to-list 'eglot-server-programs
-               `(scala-ts-mode . ("metals" "-Dmetals.client=emacs")))
+               `(scala-ts-mode . ("metals" "-Dmetals.client=emacs" "-Dmetals.http=on")))
 
   (add-to-list 'eglot-server-programs `(python-ts-mode . ("pylsp")))
   (add-to-list 'eglot-server-programs `(c++-ts-mode . ("clangd")))
