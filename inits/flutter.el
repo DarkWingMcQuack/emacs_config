@@ -1,8 +1,9 @@
 (use-package dart-mode
-  :mode "\\.dart\\'"
-  :hook
-  (dart-mode . lsp-deferred))
+  :mode "\\.dart\\'")
 
+(use-package lsp-dart
+  :after dart-mode
+  :hook (dart-mode . lsp-deferred))
 
 (use-package flutter
   :after dart-mode

@@ -29,19 +29,19 @@
     :states 'normal
     "l p" '(academic-phrases :wk "academic phrases")))
 
-(use-package flymake-languagetool
-  :hook
-  (latex-mode      . flymake-languagetool-load)
-  (LaTeX-mode      . flymake-languagetool-load)
-  (org-mode        . flymake-languagetool-load)
-  (markdown-mode   . flymake-languagetool-load)
+;; (use-package flymake-languagetool
+;;   :hook
+;;   (latex-mode      . flymake-languagetool-load)
+;;   (LaTeX-mode      . flymake-languagetool-load)
+;;   (org-mode        . flymake-languagetool-load)
+;;   (markdown-mode   . flymake-languagetool-load)
 
-  :custom
+;;   :custom
 
-  (flymake-languagetool-server-jar nil)
-  (flymake-languagetool-url "https://api.languagetool.org")
+;;   (flymake-languagetool-server-jar nil)
+;;   (flymake-languagetool-url "https://api.languagetool.org")
 
-  :general
-  (general-define-key
-   :states 'normal
-   "c w" '(flymake-languagetool-correct-at-point :wk "correct word")))
+;;   :general
+;;   (general-define-key
+;;    :states 'normal
+;;    "c w" '(flymake-languagetool-correct-at-point :wk "correct word")))

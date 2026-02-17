@@ -31,3 +31,10 @@ otherwise just toggle the last state."
   :after treemacs
   :config
   (treemacs-load-theme "nerd-icons"))
+
+(use-package lsp-treemacs
+  :after (lsp-mode treemacs)
+  :commands (lsp-treemacs-symbols
+             lsp-treemacs-references
+             lsp-treemacs-errors-list
+             lsp-treemacs-call-hierarchy))
