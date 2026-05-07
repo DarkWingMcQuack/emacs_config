@@ -16,6 +16,9 @@
 (load-user-file "core/elpaca.el")
 (load-user-file "inits/general.el")
 
+(use-package compat)
+
+
 (load-user-file "inits/centered-cursor.el")
 (load-user-file "inits/cmake.el")
 (load-user-file "inits/company.el")
@@ -27,14 +30,13 @@
 (load-user-file "inits/dirvish.el")
 (load-user-file "inits/drag-stuff.el")
 (load-user-file "inits/editorconfig.el")
-(load-user-file "inits/eldoc.el")
 (load-user-file "inits/elisp.el")
 (load-user-file "inits/elm.el")
 (load-user-file "inits/evil.el")
 (load-user-file "inits/execpfs.el")
 (load-user-file "inits/file-handling.el")
 (load-user-file "inits/flutter.el")
-(load-user-file "inits/flymake.el")
+(load-user-file "inits/flycheck.el")
 (load-user-file "inits/flyspell.el")
 (load-user-file "inits/fonts.el")
 (load-user-file "inits/gcmh.el")
