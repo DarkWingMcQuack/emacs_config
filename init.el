@@ -25,6 +25,7 @@
 (load-user-file "inits/gcmh.el")
 (load-user-file "inits/prompt.el")
 (load-user-file "inits/file-handling.el")
+(load-user-file "inits/performance.el")
 (load-user-file "inits/savehist.el")
 (load-user-file "inits/saveplace.el")
 (load-user-file "inits/undo.el")
