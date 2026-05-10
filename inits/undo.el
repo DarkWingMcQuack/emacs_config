@@ -2,7 +2,6 @@
   :hook (elpaca-after-init . global-undo-tree-mode)
 
   :custom
-  (undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
   (undo-tree-visualizer-timestamps t)
   (undo-tree-auto-save-history t)
 
