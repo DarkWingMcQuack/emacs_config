@@ -60,4 +60,4 @@
     (message "Font size reset to default: %.1f pt"
 	    (/ my/font-size-default 10.0)))
 
-  :hook (elpaca-after-init-hook . my/set-default-font-face))
+  :hook (elpaca-after-init . my/set-default-font-face))
