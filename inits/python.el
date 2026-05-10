@@ -16,5 +16,5 @@
   :general
   (my-leader
     :states 'normal
-    :keymaps 'python-mode-map
+    :keymaps '(python-mode-map python-ts-mode-map)
     "TAB" 'blacken-buffer))
