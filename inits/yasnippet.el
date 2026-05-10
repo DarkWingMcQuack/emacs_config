@@ -4,7 +4,8 @@
   (text-mode . yas-minor-mode)
 
   :general
-  (my-leader 'prog-mode-map
+  (my-leader
+    :keymaps 'prog-mode-map
     :states 'normal
     "s n" '(yas-new-snippet :wk "new snippet")
     "s g" '(yas-visit-snippet-file :wk "go to snippet file")
