@@ -40,8 +40,7 @@
 (my-leader
   "l" '(:ignore t :wk "language/writing"))
 
-(use-package lsp-mode
-  :config
+(with-eval-after-load 'lsp-mode
   (dolist (language-id '((text-mode . "plaintext")
                          (org-mode . "plaintext")
                          (git-commit-mode . "gitcommit")
