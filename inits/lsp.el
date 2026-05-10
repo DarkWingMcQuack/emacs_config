@@ -51,11 +51,11 @@
   (lsp-ui-doc-use-childframe t)
 
 
-  ;; Inline diagnostics near point
-  (lsp-ui-sideline-enable t)
-  (lsp-ui-sideline-show-diagnostics t)
+  ;; Keep LSP UI available on demand, but avoid per-line overlays while typing.
+  (lsp-ui-sideline-enable nil)
+  (lsp-ui-sideline-show-diagnostics nil)
   (lsp-ui-sideline-show-hover nil)
-  (lsp-ui-sideline-show-code-actions t)
+  (lsp-ui-sideline-show-code-actions nil)
   :general
 
   (my-leader
