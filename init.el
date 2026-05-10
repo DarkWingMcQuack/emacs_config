@@ -58,6 +58,7 @@
 (load-user-file "inits/linenumbers.el")
 (load-user-file "inits/centered-cursor.el")
 (load-user-file "inits/which-key.el")
+(load-user-file "inits/help.el")
 
 ;; Completion, search, and navigation
 (load-user-file "inits/project.el")
