@@ -1,4 +1,4 @@
 (use-package rust-mode
-  :defer t
+  :mode "\\.rs\\'"
   :hook
   (rust-mode . my/lsp-deferred))

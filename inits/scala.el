@@ -4,7 +4,7 @@
     (require 'lsp-metals)
     (my/lsp-deferred))
 
-  :mode "\\(scala\\|sbt\\|mill\\)$"
+  :mode "\\.\\(scala\\|sbt\\|mill\\)\\'"
   :hook
   (scala-ts-mode . my/scala-lsp-deferred))
 

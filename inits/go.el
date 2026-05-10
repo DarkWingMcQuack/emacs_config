@@ -2,7 +2,7 @@
   :mode "\\.go\\'"
   :after project
   :preface
-  (defun project-find-go-module (dir)
+  (defun my/project-find-go-module (dir)
     (when-let ((root (locate-dominating-file dir "go.mod")))
       (cons 'go-module root)))
 
@@ -13,4 +13,4 @@
   (go-mode . my/lsp-deferred)
 
   :init
-  (add-hook 'project-find-functions #'project-find-go-module))
+  (add-hook 'project-find-functions #'my/project-find-go-module))

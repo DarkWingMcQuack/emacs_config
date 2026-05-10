@@ -1,4 +1,5 @@
 (use-package elm-mode
+  :mode "\\.elm\\'"
   :hook
   (elm-mode . my/lsp-deferred)
   (elm-mode . prettify-symbols-mode)
