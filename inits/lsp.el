@@ -1,10 +1,16 @@
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
 
+  :init
+  (setq read-process-output-max (* 1024 1024))
+
   :custom
+  (lsp-keymap-prefix "C-c l")
   (lsp-completion-provider :capf)
   (lsp-diagnostics-provider :flycheck)
   (lsp-enable-on-type-formatting nil)
+  (lsp-idle-delay 0.5)
+  (lsp-log-io nil)
 
   (lsp-headerline-breadcrumb-enable nil)
   (lsp-use-plists t)
@@ -60,15 +66,3 @@
     :states 'normal
     "p s" '(consult-lsp-symbols   :wk "find project symbols")
     "s e" '(consult-lsp-file-diagnostics :wk "show file diagnostics")))
-
-(use-package lsp-metals
-  :after lsp-mode
-  :custom
-  (lsp-metals-server-args '("-Dmetals.client=emacs" "-Dmetals.http=on"))
-  :hook
-  (scala-mode . lsp-deferred)
-  (scala-ts-mode . lsp-deferred))
-
-(use-package lsp-latex
-  :after lsp-mode
-  :hook (LaTeX-mode . lsp-deferred))
