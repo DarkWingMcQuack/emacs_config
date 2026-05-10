@@ -73,6 +73,7 @@
 
 ;; Editing behavior
 (load-user-file "inits/evil.el")
+(load-user-file "inits/multicursor.el")
 (load-user-file "inits/smartparens.el")
 (load-user-file "inits/subword.el")
 (load-user-file "inits/drag-stuff.el")
