@@ -37,7 +37,7 @@
   (vertico-posframe-poshandler #'posframe-poshandler-frame-top-center-with-offset)
   (vertico-posframe-parameters '((internal-border-width . 1)
                                  (left-fringe . 5)
-                                 (right-fringe . 5))
-                               vertico-posframe-min-width 160
-                               vertico-posframe-width 160
-                               vertico-posframe-height 15))
+                                 (right-fringe . 5)))
+  (vertico-posframe-min-width 160)
+  (vertico-posframe-width 160)
+  (vertico-posframe-height 15))
