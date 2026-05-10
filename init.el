@@ -111,7 +111,7 @@
 (load-user-file "inits/yaml.el")
 
 ;; Writing and VCS
-(load-user-file "inits/flyspell.el")
+(load-user-file "inits/spell.el")
 (load-user-file "inits/writing.el")
 (load-user-file "inits/git-gutter.el")
 (load-user-file "inits/magit.el")
