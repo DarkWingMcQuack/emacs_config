@@ -87,6 +87,7 @@
 
 ;; Programming infrastructure
 (load-user-file "inits/direnv.el")
+(load-user-file "inits/compile.el")
 (load-user-file "inits/flycheck.el")
 (load-user-file "inits/treesitter.el")
 (load-user-file "inits/lsp.el")
