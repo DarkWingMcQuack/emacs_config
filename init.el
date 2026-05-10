@@ -1,3 +1,6 @@
+(defvar my/init-file-errors nil
+  "Init files that failed to load during startup.")
+
 (defun local-file-name (file-name)
   (let* ((file-path (expand-file-name file-name user-emacs-directory))
          (parent-dir (file-name-directory file-path)))
@@ -6,11 +9,25 @@
       (make-directory parent-dir))
     file-path))
 
-;; func which loads file in the init dir
 (defun load-user-file (file)
-  (interactive "f")
   "Load a file in current user's configuration directory"
-  (load-file (local-file-name file)))
+  (interactive "f")
+  (let ((file-path (local-file-name file)))
+    (condition-case err
+        (load-file file-path)
+      (error
+       (push (cons file err) my/init-file-errors)
+       (display-warning 'init
+                        (format "Failed to load %s: %s"
+                                file
+                                (error-message-string err))
+                        :error)))))
+
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (when my/init-file-errors
+              (message "Emacs loaded with %d init file error(s); check *Warnings*"
+                       (length my/init-file-errors)))))
 
 ;;load core
 (load-user-file "core/elpaca.el")
