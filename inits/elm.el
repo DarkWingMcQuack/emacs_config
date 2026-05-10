@@ -9,9 +9,4 @@
                         ("\\" . #x03BB)
                         ("=>" . #x21D2)
                         ("==" . #x2261)
-                        ("/=" . #x2260)))))
-  :general
-  (my-leader
-    :states 'normal
-    :keymaps '(elm-mode-map)
-    "TAB" 'elm-format-buffer))
+                        ("/=" . #x2260))))))

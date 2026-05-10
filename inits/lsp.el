@@ -31,7 +31,6 @@
   (my-leader
     :keymaps 'lsp-mode-map
     :states 'normal
-    "TAB" '(lsp-format-buffer      :wk "format buffer")
     "x r" '(xref-find-references   :wk "find references")))
 
 (use-package lsp-ui

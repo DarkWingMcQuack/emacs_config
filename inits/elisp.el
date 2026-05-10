@@ -1,14 +1,6 @@
 (use-package emacs-lisp-mode
   :ensure nil
   :preface
-  (defun my/elisp-format-buffer ()
-    "Indent, untabify, and strip trailing whitespace in the whole buffer."
-    (interactive)
-    (save-excursion
-      (indent-region (point-min) (point-max))
-      (untabify    (point-min) (point-max))
-      (delete-trailing-whitespace)))
-
   (defun my/greek-lambda ()
     (font-lock-add-keywords nil `(("\\<lambda\\>"
                                    (0
@@ -24,5 +16,4 @@
   (my-leader
     :keymaps 'emacs-lisp-mode-map
     :states 'normal
-    "TAB" '(my/elisp-format-buffer :wk "format elisp buffer")
     "b x" '(eval-buffer            :wk "execute elisp buffer")))

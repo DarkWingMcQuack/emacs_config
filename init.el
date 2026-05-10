@@ -60,6 +60,7 @@
 (load-user-file "inits/drag-stuff.el")
 (load-user-file "inits/editorconfig.el")
 (load-user-file "inits/ws-cleanup.el")
+(load-user-file "inits/format.el")
 (load-user-file "inits/rainbow.el")
 (load-user-file "inits/hl-todo.el")
 (load-user-file "inits/regex.el")
