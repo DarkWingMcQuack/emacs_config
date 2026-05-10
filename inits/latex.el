@@ -2,7 +2,7 @@
   :preface
   (defun my/latex-lsp-deferred ()
     (require 'lsp-latex)
-    (lsp-deferred))
+    (my/lsp-deferred))
 
   :mode ("\\.tex\\'" . LaTeX-mode)
   :hook

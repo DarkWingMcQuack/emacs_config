@@ -3,7 +3,7 @@
 
 (use-package lsp-dart
   :after dart-mode
-  :hook (dart-mode . lsp-deferred))
+  :hook (dart-mode . my/lsp-deferred))
 
 (use-package flutter
   :after dart-mode

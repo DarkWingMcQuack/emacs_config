@@ -1,6 +1,14 @@
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
 
+  :preface
+  (defun my/lsp-deferred ()
+    "Start LSP after applying the buffer's direnv environment when available."
+    (unless (file-remote-p default-directory)
+      (when (fboundp 'envrc-mode)
+        (envrc-mode 1)))
+    (lsp-deferred))
+
   :init
   (setq read-process-output-max (* 1024 1024))
 

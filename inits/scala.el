@@ -2,7 +2,7 @@
   :preface
   (defun my/scala-lsp-deferred ()
     (require 'lsp-metals)
-    (lsp-deferred))
+    (my/lsp-deferred))
 
   :mode "\\(scala\\|sbt\\|mill\\)$"
   :hook
