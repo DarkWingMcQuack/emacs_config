@@ -28,6 +28,7 @@
 (load-user-file "inits/dashboard.el")
 (load-user-file "inits/direnv.el")
 (load-user-file "inits/dirvish.el")
+(load-user-file "inits/docker.el")
 (load-user-file "inits/drag-stuff.el")
 (load-user-file "inits/editorconfig.el")
 (load-user-file "inits/elisp.el")
