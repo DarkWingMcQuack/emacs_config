@@ -1,9 +1,8 @@
 (use-package evil
   :preface
   (defun color-minibuffer (color)
-    `(lambda ()
-       (when (minibufferp)
-         (face-remap-add-relative 'minibuffer-prompt :foreground ,color))))
+    (when (minibufferp)
+      (face-remap-add-relative 'minibuffer-prompt :foreground color)))
 
   :custom
   (evil-want-integration t) ;; This is optional since it's already set to t by default.
