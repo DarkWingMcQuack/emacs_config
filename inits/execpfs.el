@@ -1,4 +1,5 @@
 (use-package exec-path-from-shell
+  ;; Only GUI frames need shell env import; terminal Emacs already inherits it.
   :if (memq window-system '(mac ns x pgtk))
   :custom
   (exec-path-from-shell-variables '("PATH" "MANPATH" "SSH_AUTH_SOCK"))
