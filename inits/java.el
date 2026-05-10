@@ -4,9 +4,5 @@
 
   (add-to-list 'major-mode-remap-alist '(java-mode . java-ts-mode))
 
-  (with-eval-after-load 'eglot
-    (setq eglot-workspace-configuration
-          '(:java (:configuration (:updateBuildConfiguration "automatic")))))
-
   :hook
   (java-ts-mode . lsp-deferred))
