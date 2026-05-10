@@ -23,6 +23,21 @@
   (lsp-headerline-breadcrumb-enable nil)
   (lsp-use-plists t)
 
+  :config
+  (dolist (directory '("[/\\\\]\\.bloop\\'"
+                       "[/\\\\]\\.cache\\'"
+                       "[/\\\\]\\.direnv\\'"
+                       "[/\\\\]\\.devenv\\'"
+                       "[/\\\\]\\.metals\\'"
+                       "[/\\\\]\\.mypy_cache\\'"
+                       "[/\\\\]\\.pytest_cache\\'"
+                       "[/\\\\]\\.ruff_cache\\'"
+                       "[/\\\\]\\.venv\\'"
+                       "[/\\\\]dist-newstyle\\'"
+                       "[/\\\\]node_modules\\'"
+                       "[/\\\\]target\\'"))
+    (add-to-list 'lsp-file-watch-ignored-directories directory))
+
   :general
   (general-define-key
    :keymaps 'lsp-mode-map
