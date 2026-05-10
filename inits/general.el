@@ -17,6 +17,7 @@
 
   (general-create-definer my-leader
     :states '(motion normal emacs visual)
+    :keymaps 'override
     :prefix "SPC"
     :non-normal-prefix "C-SPC")
 
