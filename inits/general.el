@@ -37,11 +37,11 @@
 
   (my-leader
     :keymaps 'override
-    "q q" '(save-buffers-kill-terminal :wk "kill emacs")
+    "q q" '(save-buffers-kill-terminal :wk "quit Emacs")
 
     "w f" '(toggle-frame-fullscreen   :wk "fill screen")
     "w h" '(split-window-horizontally :wk "horizontal split")
-    "w v" '(split-window-vertically   :wk "vertival split")
+    "w v" '(split-window-vertically   :wk "vertical split")
     "w w" '(other-window              :wk "goto next window")
     "w o" '(delete-other-windows      :wk "delete other windows")
     "w d" '(delete-window             :wk "delete current window")

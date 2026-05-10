@@ -25,7 +25,7 @@ otherwise just toggle the last state."
   (my-leader
     :states 'normal
     :keymaps 'global
-    "n" '(my/treemacs-project-toggle :wk "kill emacs")))
+    "n" '(my/treemacs-project-toggle :wk "toggle file tree")))
 
 (use-package treemacs-nerd-icons
   :after treemacs

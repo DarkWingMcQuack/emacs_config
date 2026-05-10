@@ -36,7 +36,6 @@
   With no prefix arg N defaults to 1; a negative N will shrink the font."
     (let* ((step        my/font-size-step)
 	  (delta       (* step (or n 1)))
-	  ;; FIXED: ATTRIBUTE comes second, no FRAME arg
 	  (current-h   (face-attribute 'default :height))
 	  (new-h       (+ current-h delta)))
       (set-face-attribute 'default nil :height new-h)

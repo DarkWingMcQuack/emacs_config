@@ -6,9 +6,9 @@
   :general
   (my-leader 'prog-mode-map
     :states 'normal
-    "s n" '(yas-new-snippet :wk "new snipped")
-    "s g" '(yas-visit-snippet-file :wk "goto snipped file")
-    "s i" '(yas-insert-snippet :wk "insert snipped from list"))
+    "s n" '(yas-new-snippet :wk "new snippet")
+    "s g" '(yas-visit-snippet-file :wk "go to snippet file")
+    "s i" '(yas-insert-snippet :wk "insert snippet"))
   :config
   (yas-reload-all)
   :custom
