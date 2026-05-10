@@ -1,6 +1,5 @@
 (use-package cmake-mode
   :mode ("CMakeLists\\.txt\\'" "\\.cmake\\'")
-  :after company
   :preface
   (defun my/cmake-company-backends ()
     (setq-local company-backends

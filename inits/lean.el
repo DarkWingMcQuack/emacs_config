@@ -1,6 +1,4 @@
 (use-package lean4-mode
-  :after lsp-mode
-
   :ensure (lean4-mode
            :host github
            :repo "leanprover-community/lean4-mode"

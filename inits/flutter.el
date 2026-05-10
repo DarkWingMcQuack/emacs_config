@@ -1,9 +1,14 @@
 (use-package dart-mode
-  :mode "\\.dart\\'")
+  :preface
+  (defun my/dart-lsp-deferred ()
+    (require 'lsp-dart)
+    (my/lsp-deferred))
+
+  :mode "\\.dart\\'"
+  :hook (dart-mode . my/dart-lsp-deferred))
 
 (use-package lsp-dart
-  :after dart-mode
-  :hook (dart-mode . my/lsp-deferred))
+  :after lsp-mode)
 
 (use-package flutter
   :after dart-mode
