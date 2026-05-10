@@ -15,17 +15,11 @@
   (company-tooltip-maximum-width 80)
   (company-tooltip-minimum-width 80)
 
-  (company-backends '((company-capf :with company-yasnippet)
-                      company-files
-                      (company-dabbrev-code company-dabbrev)))
+  (company-backends '((company-capf company-files company-yasnippet)))
   (company-selection-wrap-around t)
-  (company-idle-delay 0.2)
+  (company-idle-delay 0.1)
   (company-minimum-prefix-length 1)
   (company-require-match nil)
-  (company-show-quick-access t)
-  (company-dabbrev-code-other-buffers 'code)
-  (company-dabbrev-downcase nil)
-  (company-dabbrev-ignore-case nil)
   (company-transformers
    '(company-sort-prefer-same-case-prefix))
 
