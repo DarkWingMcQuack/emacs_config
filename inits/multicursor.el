@@ -4,6 +4,14 @@
   :after evil
   :demand t
   :preface
+  (defface my/evil-mc-regexp-preview-face
+    '((((class color) (background dark))
+       :background "#665c00" :foreground "#ffffff" :weight bold)
+      (((class color) (background light))
+       :background "#ffe066" :foreground "#000000" :weight bold)
+      (t :inverse-video t :weight bold))
+    "Face used for live multi-cursor regexp previews.")
+
   (defvar my/evil-mc-regexp-preview-overlays nil
     "Preview overlays used while reading a multi-cursor regexp.")
 
@@ -27,7 +35,8 @@
                   (let ((overlay (make-overlay (match-beginning 0)
                                                (match-end 0)
                                                buffer)))
-                    (overlay-put overlay 'face 'lazy-highlight)
+                    (overlay-put overlay 'face 'my/evil-mc-regexp-preview-face)
+                    (overlay-put overlay 'priority 1000)
                     (push overlay my/evil-mc-regexp-preview-overlays)
                     (setq count (1+ count)))
                   (when (and (= (match-beginning 0) (match-end 0))
@@ -59,14 +68,14 @@
 
   (defun my/evil-mc-make-cursors-for-regexp (regexp &optional beg end)
     "Create Evil multiple cursors at each match for REGEXP.
-When a region is active, only search inside that region.  Otherwise search the
-whole buffer."
+When a region is active, only search inside that region.  Otherwise search from
+point to the end of the buffer."
     (interactive
-     (let ((beg (if (use-region-p) (region-beginning) (point-min)))
+     (let ((beg (if (use-region-p) (region-beginning) (point)))
            (end (if (use-region-p) (region-end) (point-max))))
        (list (my/evil-mc-read-regexp beg end) beg end)))
     (require 'evil-mc)
-    (let* ((beg (or beg (if (use-region-p) (region-beginning) (point-min))))
+    (let* ((beg (or beg (if (use-region-p) (region-beginning) (point))))
            (end (copy-marker (or end (if (use-region-p) (region-end) (point-max)))))
            positions)
       (when (bound-and-true-p evil-local-mode)
