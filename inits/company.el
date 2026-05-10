@@ -1,20 +1,31 @@
 (use-package company
+  :preface
+  (defun my/company-box-mode-maybe ()
+    (when (display-graphic-p)
+      (company-box-mode)))
+
   :hook
   (prog-mode   . company-mode)
   (text-mode   . company-mode)
-  (shell-mode  . company-mode)
-  (eshell-mode . company-mode)
 
   :custom
   (company-format-margin-function #'company-vscode-dark-icons-margin)
+  (company-tooltip-align-annotations t)
 
   (company-tooltip-maximum-width 80)
   (company-tooltip-minimum-width 80)
 
-  (company-backends '((company-capf company-files company-yasnippet)))
+  (company-backends '((company-capf :with company-yasnippet)
+                      company-files
+                      (company-dabbrev-code company-dabbrev)))
   (company-selection-wrap-around t)
-  (company-idle-delay 0.1)
+  (company-idle-delay 0.2)
   (company-minimum-prefix-length 1)
+  (company-require-match nil)
+  (company-show-quick-access t)
+  (company-dabbrev-code-other-buffers 'code)
+  (company-dabbrev-downcase nil)
+  (company-dabbrev-ignore-case nil)
   (company-transformers
    '(company-sort-prefer-same-case-prefix))
 
@@ -31,7 +42,7 @@
 
 (use-package company-box
   :after company
-  :hook (company-mode . company-box-mode))
+  :hook (company-mode . my/company-box-mode-maybe))
 
 (use-package company-statistics
   :after company
