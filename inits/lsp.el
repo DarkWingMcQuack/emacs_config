@@ -114,7 +114,7 @@
   (my-leader
     :keymaps 'lsp-mode-map
     :states 'normal
-    "d" '(lsp-ui-doc-glance :wk "show documentation")))
+    "c d" '(lsp-ui-doc-glance :wk "show documentation")))
 
 
 (use-package consult-lsp

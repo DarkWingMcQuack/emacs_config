@@ -91,6 +91,7 @@
 (load-user-file "inits/flycheck.el")
 (load-user-file "inits/treesitter.el")
 (load-user-file "inits/lsp.el")
+(load-user-file "inits/dape.el")
 
 ;; Languages and formats
 (load-user-file "inits/cmake.el")
