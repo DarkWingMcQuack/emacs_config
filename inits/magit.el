@@ -8,7 +8,7 @@
   (general-define-key
    :keymaps 'magit-mode-map
    :states 'normal
-   "q" 'my/magit-burry-buffer)
+   "q" 'my/magit-bury-buffer)
 
   (my-leader
     "g g" '(magit-status :wk "magit status")
