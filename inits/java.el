@@ -10,9 +10,3 @@
 
   :hook
   (java-ts-mode . lsp-deferred))
-
-(use-package jarchive
-  :ensure t
-  :after eglot
-  :config
-  (jarchive-setup))
