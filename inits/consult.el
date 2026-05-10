@@ -2,7 +2,12 @@
   :after (consult flycheck))
 
 (use-package consult
-  :after flycheck project
+  :commands (consult-buffer
+             consult-goto-line
+             consult-line
+             consult-mark
+             consult-project-buffer
+             consult-yank-pop)
   :general
   (my-leader
     :states 'normal

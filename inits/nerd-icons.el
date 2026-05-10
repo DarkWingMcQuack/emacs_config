@@ -4,4 +4,4 @@
   :after marginalia nerd-icons
   :hook
   (marginalia-mode . nerd-icons-completion-marginalia-setup)
-  (elpaca-after-init . (lambda () (nerd-icons-completion-mode))))
+  (elpaca-after-init . (lambda () (nerd-icons-completion-mode 1))))
