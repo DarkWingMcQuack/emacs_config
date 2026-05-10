@@ -1,6 +1,6 @@
 (use-package go-mode
   :mode "\\.go\\'"
-  :after project eglot
+  :after project
   :preface
   (defun project-find-go-module (dir)
     (when-let ((root (locate-dominating-file dir "go.mod")))
