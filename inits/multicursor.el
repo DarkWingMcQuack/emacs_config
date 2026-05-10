@@ -1,15 +1,73 @@
+;;; multicursor.el --- Evil multi-cursor setup -*- lexical-binding: t; -*-
+
 (use-package evil-mc
   :after evil
   :demand t
   :preface
-  (defun my/evil-mc-make-cursors-for-regexp (regexp)
+  (defvar my/evil-mc-regexp-preview-overlays nil
+    "Preview overlays used while reading a multi-cursor regexp.")
+
+  (defun my/evil-mc-clear-regexp-preview ()
+    "Clear live regexp preview overlays."
+    (mapc #'delete-overlay my/evil-mc-regexp-preview-overlays)
+    (setq my/evil-mc-regexp-preview-overlays nil))
+
+  (defun my/evil-mc-preview-regexp (buffer beg end regexp)
+    "Preview up to 50 matches for REGEXP in BUFFER between BEG and END."
+    (with-current-buffer buffer
+      (my/evil-mc-clear-regexp-preview)
+      (unless (string= regexp "")
+        (save-excursion
+          (goto-char beg)
+          (condition-case nil
+              (let ((count 0))
+                (while (and (< count 50)
+                            (< (point) end)
+                            (re-search-forward regexp end t))
+                  (let ((overlay (make-overlay (match-beginning 0)
+                                               (match-end 0)
+                                               buffer)))
+                    (overlay-put overlay 'face 'lazy-highlight)
+                    (push overlay my/evil-mc-regexp-preview-overlays)
+                    (setq count (1+ count)))
+                  (when (and (= (match-beginning 0) (match-end 0))
+                             (< (point) end))
+                    (forward-char 1))))
+            (invalid-regexp nil))))))
+
+  (defun my/evil-mc-read-regexp (beg end)
+    "Read a regexp while previewing matches between BEG and END."
+    (let* ((source-buffer (current-buffer))
+           (beg-marker (copy-marker beg))
+           (end-marker (copy-marker end))
+           (update-preview
+            (lambda ()
+              (my/evil-mc-preview-regexp
+               source-buffer
+               beg-marker
+               end-marker
+               (minibuffer-contents-no-properties)))))
+      (unwind-protect
+          (minibuffer-with-setup-hook
+              (lambda ()
+                (add-hook 'post-command-hook update-preview nil t))
+            (read-regexp "Cursors for regexp"))
+        (with-current-buffer source-buffer
+          (my/evil-mc-clear-regexp-preview))
+        (set-marker beg-marker nil)
+        (set-marker end-marker nil))))
+
+  (defun my/evil-mc-make-cursors-for-regexp (regexp &optional beg end)
     "Create Evil multiple cursors at each match for REGEXP.
 When a region is active, only search inside that region.  Otherwise search the
 whole buffer."
-    (interactive (list (read-regexp "Cursors for regexp")))
+    (interactive
+     (let ((beg (if (use-region-p) (region-beginning) (point-min)))
+           (end (if (use-region-p) (region-end) (point-max))))
+       (list (my/evil-mc-read-regexp beg end) beg end)))
     (require 'evil-mc)
-    (let* ((beg (if (use-region-p) (region-beginning) (point-min)))
-           (end (copy-marker (if (use-region-p) (region-end) (point-max))))
+    (let* ((beg (or beg (if (use-region-p) (region-beginning) (point-min))))
+           (end (copy-marker (or end (if (use-region-p) (region-end) (point-max)))))
            positions)
       (when (bound-and-true-p evil-local-mode)
         (evil-normal-state))
@@ -52,27 +110,20 @@ whole buffer."
 
   :general
   (my-leader
-    "M" '(:ignore t :wk "multi-cursor"))
+    "m" '(:ignore t :wk "multi-cursor"))
 
   (my-leader
     :states '(normal visual)
-    "M m" '(evil-mc-make-cursor-here :wk "cursor here")
-    "M n" '(evil-mc-make-and-goto-next-match :wk "add next match")
-    "M N" '(evil-mc-make-and-goto-prev-match :wk "add previous match")
-    "M a" '(evil-mc-make-all-cursors :wk "add all matches")
-    "M j" '(evil-mc-make-cursor-move-next-line :wk "add line below")
-    "M k" '(evil-mc-make-cursor-move-prev-line :wk "add line above")
-    "M s" '(evil-mc-skip-and-goto-next-match :wk "skip next match")
-    "M S" '(evil-mc-skip-and-goto-prev-match :wk "skip previous match")
-    "M u" '(evil-mc-undo-last-added-cursor :wk "undo last cursor")
-    "M q" '(evil-mc-undo-all-cursors :wk "clear cursors")
-    "M p" '(evil-mc-pause-cursors :wk "pause cursors")
-    "M P" '(evil-mc-resume-cursors :wk "resume cursors")
-    "M /" '(my/evil-mc-make-cursors-for-regexp :wk "cursors from regexp")
-    "M r" '(vr/replace :wk "regexp replace")
-    "M R" '(vr/query-replace :wk "query regexp replace"))
-
-  (my-leader
-    :states 'visual
-    "M i" '(evil-mc-make-cursor-in-visual-selection-beg :wk "cursors at starts")
-    "M A" '(evil-mc-make-cursor-in-visual-selection-end :wk "cursors at ends")))
+    "m m" '(evil-mc-make-cursor-here :wk "cursor here")
+    "m n" '(evil-mc-make-and-goto-next-match :wk "add next match")
+    "m N" '(evil-mc-make-and-goto-prev-match :wk "add previous match")
+    "m a" '(evil-mc-make-all-cursors :wk "add all matches")
+    "m j" '(evil-mc-make-cursor-move-next-line :wk "add line below")
+    "m k" '(evil-mc-make-cursor-move-prev-line :wk "add line above")
+    "m s" '(evil-mc-skip-and-goto-next-match :wk "skip next match")
+    "m S" '(evil-mc-skip-and-goto-prev-match :wk "skip previous match")
+    "m u" '(evil-mc-undo-last-added-cursor :wk "undo last cursor")
+    "m q" '(evil-mc-undo-all-cursors :wk "clear cursors")
+    "m p" '(evil-mc-pause-cursors :wk "pause cursors")
+    "m P" '(evil-mc-resume-cursors :wk "resume cursors")
+    "m /" '(my/evil-mc-make-cursors-for-regexp :wk "cursors from regexp")))
