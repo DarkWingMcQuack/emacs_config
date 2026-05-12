@@ -2,8 +2,8 @@
   :ensure nil
   :preface
   (defgroup my/fonts nil
-  "My default-face font prefs."
-  :group 'faces)
+    "My default-face font prefs."
+    :group 'faces)
 
   (defcustom my/fira-code-font-family "Fira Code"
     "Preferred Fira Code font family name."
@@ -66,11 +66,11 @@
   (defun my/set-default-font-face (&optional frame)
     (when (window-system frame)
       (let ((spec (if (my/fira-code-installed-p)
-		      my/font-primary-spec
+                      my/font-primary-spec
                     (progn
                       (my/warn-missing-fira-code)
-		      my/font-fallback-spec))))
-	(set-face-attribute 'default frame :font spec))))
+                      my/font-fallback-spec))))
+        (set-face-attribute 'default frame :font spec))))
 
 
   (defvar my/font-size-step 10
@@ -85,9 +85,9 @@
     "Change the default face height by N * `my/font-size-step` (.1pt units).
   With no prefix arg N defaults to 1; a negative N will shrink the font."
     (let* ((step        my/font-size-step)
-	  (delta       (* step (or n 1)))
-	  (current-h   (face-attribute 'default :height))
-	  (new-h       (+ current-h delta)))
+           (delta       (* step (or n 1)))
+           (current-h   (face-attribute 'default :height))
+           (new-h       (+ current-h delta)))
       (set-face-attribute 'default nil :height new-h)
       (message "Font size now %.1f pt" (/ new-h 10.0))))
 
@@ -107,7 +107,7 @@
     (interactive)
     (set-face-attribute 'default nil :height my/font-size-default)
     (message "Font size reset to default: %.1f pt"
-	    (/ my/font-size-default 10.0)))
+             (/ my/font-size-default 10.0)))
 
   :hook (elpaca-after-init . my/set-default-font-face))
 
@@ -115,4 +115,4 @@
   :if (my/fira-code-mode-fonts-installed-p)
   :config
   (fira-code-mode-set-font)
-  :hook (prog-mode . fira-code-mode))
+  (global-fira-code-mode))
