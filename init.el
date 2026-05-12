@@ -68,7 +68,6 @@
 (load-user-file "inits/company.el")
 (load-user-file "inits/yasnippet.el")
 (load-user-file "inits/dirvish.el")
-(load-user-file "inits/treemacs.el")
 (load-user-file "inits/crux.el")
 
 ;; Editing behavior
