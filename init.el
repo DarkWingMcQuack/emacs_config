@@ -54,7 +54,6 @@
 (load-user-file "inits/nerd-icons.el")
 (load-user-file "inits/modeline.el")
 (load-user-file "inits/dashboard.el")
-(load-user-file "inits/ligatures.el")
 (load-user-file "inits/linenumbers.el")
 (load-user-file "inits/centered-cursor.el")
 (load-user-file "inits/which-key.el")

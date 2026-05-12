@@ -5,8 +5,16 @@
   "My default-face font prefs."
   :group 'faces)
 
+  (defcustom my/fira-code-font-family "Fira Code"
+    "Preferred Fira Code font family name."
+    :type 'string)
+
+  (defcustom my/fira-code-symbol-font-family "Fira Code Symbol"
+    "Font family used by `fira-code-mode' for ligature symbols."
+    :type 'string)
+
   (defcustom my/font-primary-spec
-    (font-spec :family "Fira Code" :size 15)
+    (font-spec :family my/fira-code-font-family :size 15)
     "Preferred font spec."
     :type 'font)
 
@@ -15,11 +23,53 @@
     "Fallback font spec."
     :type 'font)
 
+  (defvar my/fira-code-missing-warning-shown nil
+    "Whether the missing Fira Code warning has already been shown.")
+
+  (defvar my/fira-code-symbol-missing-warning-shown nil
+    "Whether the missing Fira Code Symbol warning has already been shown.")
+
+  (defun my/fira-code-installed-p ()
+    "Return non-nil when Fira Code is available to Emacs."
+    (find-font (font-spec :family my/fira-code-font-family)))
+
+  (defun my/fira-code-symbol-installed-p ()
+    "Return non-nil when Fira Code Symbol is available to Emacs."
+    (find-font (font-spec :family my/fira-code-symbol-font-family)))
+
+  (defun my/warn-missing-fira-code ()
+    "Warn once when Fira Code is not available."
+    (unless my/fira-code-missing-warning-shown
+      (setq my/fira-code-missing-warning-shown t)
+      (display-warning 'fonts
+                       "Fira Code is not installed; using fallback font and disabling fira-code-mode."
+                       :warning)))
+
+  (defun my/warn-missing-fira-code-symbol ()
+    "Warn once when Fira Code Symbol is not available."
+    (unless my/fira-code-symbol-missing-warning-shown
+      (setq my/fira-code-symbol-missing-warning-shown t)
+      (display-warning 'fonts
+                       "Fira Code Symbol is not installed; disabling fira-code-mode to avoid broken ligature glyphs."
+                       :warning)))
+
+  (defun my/fira-code-mode-fonts-installed-p ()
+    "Return non-nil when fonts required by `fira-code-mode' are available."
+    (let ((fira-code-installed (my/fira-code-installed-p))
+          (fira-code-symbol-installed (my/fira-code-symbol-installed-p)))
+      (unless fira-code-installed
+        (my/warn-missing-fira-code))
+      (unless fira-code-symbol-installed
+        (my/warn-missing-fira-code-symbol))
+      (and fira-code-installed fira-code-symbol-installed)))
+
   (defun my/set-default-font-face (&optional frame)
     (when (window-system frame)
-      (let ((spec (if (find-font my/font-primary-spec)
+      (let ((spec (if (my/fira-code-installed-p)
 		      my/font-primary-spec
-		    my/font-fallback-spec)))
+                    (progn
+                      (my/warn-missing-fira-code)
+		      my/font-fallback-spec))))
 	(set-face-attribute 'default frame :font spec))))
 
 
@@ -60,3 +110,9 @@
 	    (/ my/font-size-default 10.0)))
 
   :hook (elpaca-after-init . my/set-default-font-face))
+
+(use-package fira-code-mode
+  :if (my/fira-code-mode-fonts-installed-p)
+  :config
+  (fira-code-mode-set-font)
+  :hook (prog-mode . fira-code-mode))
