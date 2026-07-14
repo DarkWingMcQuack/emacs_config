@@ -9,6 +9,6 @@
   (scala-ts-mode . my/scala-lsp-deferred))
 
 (use-package lsp-metals
-  :after lsp-mode
   :custom
+  (lsp-metals-multi-root nil)
   (lsp-metals-server-args '("-Dmetals.client=emacs" "-Dmetals.http=on")))

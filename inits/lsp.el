@@ -73,6 +73,8 @@
                        "[/\\\\]project[/\\\\]project\\'"
                        "[/\\\\]target\\'"
                        "[/\\\\]venv\\'"
+                       "[/\\\\]build\\'"
+                       "[/\\\\]target\\'"
                        "[/\\\\]zig-cache\\'"))
     (add-to-list 'lsp-file-watch-ignored-directories directory))
 
