@@ -8,6 +8,7 @@
   (set-keyboard-coding-system 'utf-8)
 
   (setq backup-by-copying t
+        create-lockfiles t
         make-backup-files t
         auto-save-interval 200
         auto-save-timeout 20
@@ -16,6 +17,12 @@
         kept-old-versions 2
         version-control t
         delete-auto-save-files t)
+
+  ;; Keep Emacs interlocks out of project worktrees.  `no-littering' already
+  ;; centralizes backups and auto-saves below `user-emacs-directory'/var/.
+  (let ((lock-directory (no-littering-expand-var-file-name "lock-files/")))
+    (make-directory lock-directory t)
+    (setq lock-file-name-transforms `((".*" ,lock-directory t))))
 
   :hook
   ;; whenever an external process changes a file underneath emacs, and there
