@@ -10,7 +10,8 @@
     (cdr project))
 
   :hook
-  (go-mode . my/lsp-deferred)
+  ((go-mode . my/lsp-deferred)
+   (go-ts-mode . my/lsp-deferred))
 
   :init
   (add-hook 'project-find-functions #'my/project-find-go-module))

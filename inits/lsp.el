@@ -1,13 +1,23 @@
+(defun my/lsp-client-available-p ()
+  "Return non-nil when an installed LSP client supports this buffer."
+  (when (require 'lsp-mode nil t)
+    (lsp--require-packages)
+    (not (null (lsp--find-clients)))))
+
+(defun my/lsp-deferred ()
+  "Start LSP after applying the buffer's direnv environment when available."
+  (when buffer-file-name
+    (unless (file-remote-p default-directory)
+      (when (and (fboundp 'envrc-mode)
+                 (not (bound-and-true-p envrc-mode)))
+        (envrc-mode 1)))
+    (when (and (not (bound-and-true-p lsp-mode))
+               (not (bound-and-true-p lsp--buffer-deferred))
+               (my/lsp-client-available-p))
+      (lsp-deferred))))
+
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
-
-  :preface
-  (defun my/lsp-deferred ()
-    "Start LSP after applying the buffer's direnv environment when available."
-    (unless (file-remote-p default-directory)
-      (when (fboundp 'envrc-mode)
-        (envrc-mode 1)))
-    (lsp-deferred))
 
   :init
   (setq read-process-output-max (* 1024 1024))
@@ -16,9 +26,11 @@
   (lsp-keymap-prefix "C-c l")
   (lsp-completion-provider :capf)
   (lsp-diagnostics-provider :flycheck)
+  (lsp-enable-suggest-server-download nil)
   (lsp-enable-on-type-formatting nil)
   (lsp-idle-delay 0.5)
   (lsp-log-io nil)
+  (lsp-warn-no-matched-clients nil)
 
   (lsp-headerline-breadcrumb-enable nil)
   (lsp-use-plists t)

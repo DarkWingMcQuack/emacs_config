@@ -1,4 +1,4 @@
-(use-package c++-ts-mode
+(use-package c-ts-mode
   :ensure nil
   :preface
   (defvar pretty-for-rgx
@@ -27,12 +27,9 @@
   (c-ts-mode-indent-offset 4)
 
   :init
-  ;; remap the standard C/C++ modes
-  (add-to-list 'major-mode-remap-alist '(c-mode . c-ts-mode))
-  (add-to-list 'major-mode-remap-alist '(c++-mode . c++-ts-mode))
-  (add-to-list 'major-mode-remap-alist '(c-or-c++-mode . c-or-c++-ts-mode))
-
   :hook
-  (c++-ts-mode . my/lsp-deferred)
-  (c-ts-mode . my/lsp-deferred)
+  ((c-mode . my/lsp-deferred)
+   (c++-mode . my/lsp-deferred)
+   (c++-ts-mode . my/lsp-deferred)
+   (c-ts-mode . my/lsp-deferred))
   (c++-ts-mode . pretty-for-add-keywords))

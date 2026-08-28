@@ -1,8 +1,5 @@
-(use-package java-mode
+(use-package java-ts-mode
   :ensure nil
-  :config
-
-  (add-to-list 'major-mode-remap-alist '(java-mode . java-ts-mode))
-
   :hook
-  (java-ts-mode . my/lsp-deferred))
+  ((java-mode . my/lsp-deferred)
+   (java-ts-mode . my/lsp-deferred)))
