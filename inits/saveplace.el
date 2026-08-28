@@ -1,5 +1,6 @@
 (use-package saveplace
   :ensure nil
+  :demand t
   :preface
   (defun save-place-reposition ()
     "Force windows to recenter current line (with saved position)."
@@ -10,4 +11,6 @@
                           (with-selected-window win (recenter)))))
                     (current-buffer)))
 
-  :hook(find-file . save-place-reposition))
+  :config
+  (save-place-mode 1)
+  :hook (find-file . save-place-reposition))
