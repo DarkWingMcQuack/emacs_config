@@ -12,7 +12,8 @@
     (save-excursion
       (cond
        ((and (derived-mode-p 'python-mode 'python-ts-mode)
-             (require 'blacken nil t))
+             (require 'blacken nil t)
+             (executable-find blacken-executable))
         (blacken-buffer))
        ((and (derived-mode-p 'elm-mode)
              (fboundp 'elm-format-buffer))

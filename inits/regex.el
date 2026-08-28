@@ -4,7 +4,7 @@
 (use-package visual-regexp-steroids
   :after visual-regexp
   :custom
-  (vr/engine 'python)
+  (vr/engine (if (executable-find "python") 'python 'emacs))
   :general
   (my-leader
     :states 'normal
