@@ -109,7 +109,8 @@
     (message "Font size reset to default: %.1f pt"
              (/ my/font-size-default 10.0)))
 
-  :hook (elpaca-after-init . my/set-default-font-face))
+  :hook ((elpaca-after-init . my/set-default-font-face)
+         (after-make-frame-functions . my/set-default-font-face)))
 
 (use-package fira-code-mode
   :if (my/fira-code-mode-fonts-installed-p)
