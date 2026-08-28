@@ -26,10 +26,12 @@
 
   (defun my/project-compile-root-directory ()
     "Return the nearest build-root directory or the current project root."
-    (or (catch 'root
-          (dolist (file my/project-compile-root-files)
-            (when-let ((root (locate-dominating-file default-directory file)))
-              (throw 'root root))))
+    (or (car (sort (delq nil
+                         (mapcar (lambda (file)
+                                   (locate-dominating-file default-directory file))
+                                 my/project-compile-root-files))
+                   (lambda (left right)
+                     (> (length left) (length right)))))
         (my/project-root-directory)))
 
   (defun my/project-file-exists-p (file)
