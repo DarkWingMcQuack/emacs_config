@@ -1,4 +1,5 @@
 (use-package project
+  :ensure nil
   :commands project-find-file project-switch-project
   :general
   (my-leader
