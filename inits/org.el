@@ -114,6 +114,12 @@
   (my/org-ensure-files)
   (org-capture nil "t"))
 
+(defun my/org-fragtog-mode-maybe ()
+  "Enable Org Fragtog only in buffers safe for expensive features."
+  (when (and (my/expensive-mode-safe-p)
+             (require 'org-fragtog nil t))
+    (org-fragtog-mode 1)))
+
 (use-package org
   :ensure nil
   :demand t
@@ -201,7 +207,9 @@
 
 (use-package org-fragtog
   :after org
-  :hook (org-mode . org-fragtog-mode))
+  :custom
+  (org-fragtog-preview-delay 0.3)
+  :hook (org-mode . my/org-fragtog-mode-maybe))
 
 (use-package org-modern
   :after org

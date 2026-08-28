@@ -17,8 +17,6 @@
 
   (company-backends '((company-capf company-files company-yasnippet)))
   (company-selection-wrap-around t)
-  (company-idle-delay 0.1)
-  (company-minimum-prefix-length 1)
   (company-require-match nil)
   (company-transformers
    '(company-sort-prefer-same-case-prefix))
@@ -40,5 +38,5 @@
 
 (use-package company-statistics
   :after company
-  :hook
-  (company-mode . company-statistics-mode))
+  :config
+  (company-statistics-mode 1))

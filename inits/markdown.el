@@ -26,34 +26,21 @@
       (unless (eq exit-code 0)
         (user-error "%s failed with exit code %s" (car command) exit-code)))))
 
-(defun my/markdown-preview (&optional quiet)
-  "Open a live preview for the current Markdown buffer.
-When QUIET is non-nil, report setup problems with `message' instead
-of signaling an error."
+(defun my/markdown-preview ()
+  "Open a live preview for the current Markdown buffer."
   (interactive)
-  (cond
-   ((not (derived-mode-p 'markdown-mode))
-    (if quiet
-        (message "Markdown preview skipped: current buffer is not Markdown")
-      (user-error "Current buffer is not Markdown")))
-   ((not buffer-file-name)
-    (if quiet
-        (message "Markdown preview skipped: buffer does not visit a file")
-      (user-error "Markdown preview needs a file-backed buffer")))
-   ((not (my/markdown-renderer-command))
-    (if quiet
-        (message "Markdown preview skipped: install pandoc, cmark-gfm, cmark, markdown_py, or markdown")
-      (user-error "Markdown preview needs pandoc, cmark-gfm, cmark, markdown_py, or markdown on PATH")))
-   ((bound-and-true-p markdown-live-preview-mode)
-    (markdown-live-preview-export)
-    (when (buffer-live-p markdown-live-preview-buffer)
-      (markdown-display-buffer-other-window markdown-live-preview-buffer)))
-   (t
-    (markdown-live-preview-mode 1))))
-
-(defun my/markdown-preview-maybe ()
-  "Open Markdown live preview when possible."
-  (my/markdown-preview t))
+  (unless (derived-mode-p 'markdown-mode)
+    (user-error "Current buffer is not Markdown"))
+  (unless buffer-file-name
+    (user-error "Markdown preview needs a file-backed buffer"))
+  (unless (my/markdown-renderer-command)
+    (user-error "Markdown preview needs pandoc, cmark-gfm, cmark, markdown_py, or markdown on PATH"))
+  (if (bound-and-true-p markdown-live-preview-mode)
+      (progn
+        (markdown-live-preview-export)
+        (when (buffer-live-p markdown-live-preview-buffer)
+          (markdown-display-buffer-other-window markdown-live-preview-buffer)))
+    (markdown-live-preview-mode 1)))
 
 (use-package markdown-mode
   :commands (markdown-mode
@@ -66,10 +53,7 @@ of signaling an error."
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
-  :hook ((markdown-mode . visual-line-mode)
-         (gfm-mode . visual-line-mode)
-         (markdown-mode . my/markdown-preview-maybe)
-         (gfm-mode . my/markdown-preview-maybe))
+  :hook (markdown-mode . visual-line-mode)
   :custom
   (markdown-command #'my/markdown-command)
   (markdown-fontify-code-blocks-natively t)

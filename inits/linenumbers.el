@@ -2,12 +2,10 @@
   :ensure nil
   :preface
   (defun my/display-line-numbers-mode-maybe ()
-    (when (my/expensive-mode-safe-p)
-      (display-line-numbers-mode 1)))
+    (my/enable-expensive-mode #'display-line-numbers-mode))
 
   :custom
   (display-line-numbers-type 'absolute)
-  (display-line-numbers-width-start t)
   :hook
   (prog-mode . my/display-line-numbers-mode-maybe)
   (text-mode . my/display-line-numbers-mode-maybe)

@@ -1,14 +1,15 @@
 (use-package rainbow-delimiters
+  :preface
+  (defun my/rainbow-delimiters-mode-maybe ()
+    (my/enable-expensive-mode #'rainbow-delimiters-mode))
   :hook
-  (prog-mode . rainbow-delimiters-mode))
+  (prog-mode . my/rainbow-delimiters-mode-maybe))
 
 (use-package rainbow-mode
   :preface
   (defun my/rainbow-mode-maybe ()
-    (when (my/expensive-mode-safe-p)
-      (rainbow-mode 1)))
+    (my/enable-expensive-mode #'rainbow-mode))
 
   :hook
-  (prog-mode . my/rainbow-mode-maybe)
   (css-mode . my/rainbow-mode-maybe)
   (html-mode . my/rainbow-mode-maybe))

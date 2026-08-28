@@ -5,7 +5,7 @@
   (dirvish-mode-line-format
    '(:left (sort file-time "" file-size symlink) :right (omit yank index)))
 
-  (dirvish-attributes '(nerd-icons file-size collapse subtree-state vc-state git-msg))
+  (dirvish-attributes '(nerd-icons file-size collapse subtree-state))
 
   :hook
   (elpaca-after-init . dirvish-peek-mode)

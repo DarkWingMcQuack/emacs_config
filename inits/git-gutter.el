@@ -4,7 +4,7 @@
   (defun my/git-gutter-mode-maybe ()
     (when (and buffer-file-name
                (my/expensive-mode-safe-p))
-      (git-gutter-mode 1)))
+      (my/enable-expensive-mode #'git-gutter-mode)))
 
   :custom
   (git-gutter-fr:side 'right-fringe)

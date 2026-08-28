@@ -13,8 +13,20 @@
     "Return non-nil when the current buffer is larger than `my/large-buffer-threshold'."
     (> (buffer-size) my/large-buffer-threshold))
 
+  (defun my/enable-expensive-mode (mode)
+    "Enable MODE only in buffers that are safe for expensive features."
+    (when (and (fboundp mode)
+               (my/expensive-mode-safe-p))
+      (funcall mode 1)))
+
   (defun my/expensive-mode-safe-p ()
     "Return non-nil when expensive minor modes are reasonable in this buffer."
     (not (or (minibufferp)
              (my/remote-buffer-p)
-             (my/large-buffer-p)))))
+             (my/large-buffer-p))))
+
+  :config
+  (require 'so-long)
+  (dolist (mode '(centered-cursor-mode git-gutter-mode rainbow-mode))
+    (add-to-list 'so-long-minor-modes mode))
+  (global-so-long-mode 1))
