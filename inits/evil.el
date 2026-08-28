@@ -1,8 +1,20 @@
 (use-package evil
   :preface
+  (defvar-local my/color-minibuffer-cookie nil)
+
   (defun color-minibuffer (color)
     (when (minibufferp)
-      (face-remap-add-relative 'minibuffer-prompt :foreground color)))
+      (when my/color-minibuffer-cookie
+        (face-remap-remove-relative my/color-minibuffer-cookie))
+      (setq my/color-minibuffer-cookie
+            (face-remap-add-relative 'minibuffer-prompt :foreground color))))
+
+  (defun my/clear-color-minibuffer ()
+    (when my/color-minibuffer-cookie
+      (face-remap-remove-relative my/color-minibuffer-cookie)
+      (setq my/color-minibuffer-cookie nil)))
+
+  (add-hook 'minibuffer-exit-hook #'my/clear-color-minibuffer)
 
   :custom
   (evil-want-integration t) ;; This is optional since it's already set to t by default.
