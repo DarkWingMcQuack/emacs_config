@@ -1,7 +1,8 @@
 (use-package flycheck
   :preface
   (defun my/flycheck-mode-maybe ()
-    (my/enable-expensive-mode #'flycheck-mode))
+    (unless (derived-mode-p 'nael-mode)
+      (my/enable-expensive-mode #'flycheck-mode)))
 
   :hook
   (prog-mode . my/flycheck-mode-maybe)
