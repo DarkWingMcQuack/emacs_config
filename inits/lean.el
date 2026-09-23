@@ -60,17 +60,7 @@
                        (and (derived-mode-p 'nael-mode)
                             (executable-find "lean-fmt")))
       :server-id 'lean-fmt
-      :add-on? t)))
-
-  (defun my/suppress-lsp-inlayhint-warnings (orig-fun type message &rest args)
-    "Suppress LSP workspace/inlayHint/refresh warnings."
-    (unless (and (eq type 'lsp-mode)
-                 (stringp message)
-                 (string-match-p "workspace/inlayHint/refresh" message))
-      (apply orig-fun type message args)))
-
-  (advice-add 'display-warning :around
-              #'my/suppress-lsp-inlayhint-warnings))
+      :add-on? t))))
 
 (use-package nael-lsp
   :ensure (nael-lsp
@@ -80,7 +70,11 @@
            :main "nael-lsp/nael-lsp.el"
            :files ("nael-lsp/*.el")
            :autoloads nil)
-  :after (nael lsp-mode))
+  :after (nael lsp-mode)
+  :config
+  ;; lsp-mode advertises no refresh support; acknowledge Lean's request.
+  (puthash "workspace/inlayHint/refresh" #'ignore
+           (lsp--client-request-handlers (gethash 'nael lsp-clients))))
 
 (use-package eldoc-box
   :ensure t
