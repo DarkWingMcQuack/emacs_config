@@ -1,10 +1,15 @@
+(setq dashboard-startup-banner "~/.emacs.d/gnu.svg")
+
+(defun my/lazy-dashboard ()
+  (require 'dashboard)
+  (setq dashboard-startup-banner "~/.emacs.d/gnu.svg")
+  (with-current-buffer (get-buffer-create dashboard-buffer-name)
+    (setq default-directory user-emacs-directory))
+  (dashboard-open))
+
+(add-hook 'elpaca-after-init-hook #'my/lazy-dashboard)
+
 (use-package dashboard
-  :after nerd-icons
-  :preface
-  (defun my/lazy-dashboard () (dashboard-open))
-
-  :hook (elpaca-after-init . my/lazy-dashboard)
-
   :custom
   (dashboard-startup-banner "~/.emacs.d/gnu.svg")
   (dashboard-image-banner-max-height 300)
