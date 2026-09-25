@@ -16,6 +16,10 @@
   (setq-local eldoc-display-functions '(my/nael-eldoc-display))
   (setq-local lsp-eldoc-render-all t))
 
+(use-package unicode-math-input
+  :ensure t
+  :hook (nael-mode . (lambda () (set-input-method "unicode-math"))))
+
 (defun my/nael-execute-file ()
   "Compile the current Lean file in its Lake project, when available."
   (interactive)
