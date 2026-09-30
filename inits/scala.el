@@ -1,12 +1,17 @@
 (use-package scala-ts-mode
   :preface
+  (defun my/scala-ts-font-lock-setup ()
+    "Enable Scala's full tree-sitter syntax highlighting."
+    (setq-local treesit-font-lock-level 4)
+    (treesit-font-lock-recompute-features))
+
   (defun my/scala-lsp-deferred ()
     (require 'lsp-metals)
     (my/lsp-deferred))
 
   :mode "\\.\\(scala\\|sbt\\|mill\\)\\'"
-  :hook
-  (scala-ts-mode . my/scala-lsp-deferred))
+  :hook ((scala-ts-mode . my/scala-ts-font-lock-setup)
+         (scala-ts-mode . my/scala-lsp-deferred)))
 
 (use-package lsp-metals
   :custom
