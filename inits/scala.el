@@ -1,4 +1,4 @@
-(use-package scala-ts-mode
+(use-package scala-mode
   :preface
   (defun my/scala-lsp-deferred ()
     (require 'lsp-metals)
@@ -6,7 +6,7 @@
 
   :mode "\\.\\(scala\\|sbt\\|mill\\)\\'"
   :hook
-  (scala-ts-mode . my/scala-lsp-deferred))
+  (scala-mode . my/scala-lsp-deferred))
 
 (use-package lsp-metals
   :custom
