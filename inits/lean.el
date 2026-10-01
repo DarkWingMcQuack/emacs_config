@@ -42,8 +42,11 @@
 
 (use-package nael-lsp
   :after nael
-  :vc ( :lisp-dir "nael-lsp"
-        :url "https://codeberg.org/mekeor/nael.git")
+  ;; Its generated autoloads access `nael-mode-map' before Nael is loaded.
+  ;; Load the package itself after Nael instead.
+  :ensure (:repo "https://codeberg.org/mekeor/nael.git"
+           :files ("nael-lsp/*.el" :defaults)
+           :autoloads nil)
   :config
   ;; lsp-mode advertises no refresh support; acknowledge Lean's request.
   (puthash "workspace/inlayHint/refresh" #'ignore

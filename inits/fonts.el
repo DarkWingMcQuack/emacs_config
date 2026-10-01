@@ -14,12 +14,12 @@
     :type 'string)
 
   (defcustom my/font-primary-spec
-    (font-spec :family my/fira-code-font-family :size 15)
+    (font-spec :family my/fira-code-font-family :size 15.0)
     "Preferred font spec."
     :type 'font)
 
   (defcustom my/font-fallback-spec
-    (font-spec :family "monospace" :size 16)
+    (font-spec :family "monospace" :size 16.0)
     "Fallback font spec."
     :type 'font)
 
@@ -70,15 +70,17 @@
                     (progn
                       (my/warn-missing-fira-code)
                       my/font-fallback-spec))))
-        (set-face-attribute 'default frame :font spec))))
+        (set-face-attribute 'default frame :font spec)
+        (setq my/font-size-default (face-attribute 'default :height frame)))))
 
 
   (defvar my/font-size-step 10
     "Amount to change font height by in .1pt units (10 = 1 pt).")
 
   (defvar my/font-size-default
-    (face-attribute 'default :height)
-    "Original default font height, in .1pt units, as loaded at startup.")
+    (round (* 10 (font-get my/font-primary-spec :size)))
+    "Configured default font height, in .1pt units.
+Updated when the preferred or fallback font is applied to a GUI frame.")
 
 
   (defun my/adjust-font-size (&optional n)
@@ -103,11 +105,14 @@
     (my/adjust-font-size -1))
 
   (defun my/reset-font-size ()
-    "Restore the default font size to its original value."
+    "Restore the default font size to its configured value."
     (interactive)
     (set-face-attribute 'default nil :height my/font-size-default)
     (message "Font size reset to default: %.1f pt"
              (/ my/font-size-default 10.0)))
+
+  :init
+  (my/set-default-font-face)
 
   :hook ((elpaca-after-init . my/set-default-font-face)
          (after-make-frame-functions . my/set-default-font-face)))
