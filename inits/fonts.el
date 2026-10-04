@@ -14,13 +14,13 @@
     :type 'string)
 
   (defcustom my/font-primary-spec
-    (font-spec :family my/fira-code-font-family :size 15.0)
-    "Preferred font spec."
+    (font-spec :family my/fira-code-font-family)
+    "Preferred font spec, keeping Emacs's default size."
     :type 'font)
 
   (defcustom my/font-fallback-spec
-    (font-spec :family "monospace" :size 16.0)
-    "Fallback font spec."
+    (font-spec :family "monospace")
+    "Fallback font spec, keeping Emacs's default size."
     :type 'font)
 
   (defvar my/fira-code-missing-warning-shown nil
@@ -70,7 +70,9 @@
                     (progn
                       (my/warn-missing-fira-code)
                       my/font-fallback-spec))))
-        (set-face-attribute 'default frame :font spec)
+        (set-face-attribute 'default frame
+                            :font spec
+                            :height (face-attribute 'default :height frame))
         (setq my/font-size-default (face-attribute 'default :height frame)))))
 
 
@@ -78,8 +80,8 @@
     "Amount to change font height by in .1pt units (10 = 1 pt).")
 
   (defvar my/font-size-default
-    (round (* 10 (font-get my/font-primary-spec :size)))
-    "Configured default font height, in .1pt units.
+    (face-attribute 'default :height)
+    "Initial default font height, in .1pt units.
 Updated when the preferred or fallback font is applied to a GUI frame.")
 
 
@@ -105,7 +107,7 @@ Updated when the preferred or fallback font is applied to a GUI frame.")
     (my/adjust-font-size -1))
 
   (defun my/reset-font-size ()
-    "Restore the default font size to its configured value."
+    "Restore the default font size to its startup value."
     (interactive)
     (set-face-attribute 'default nil :height my/font-size-default)
     (message "Font size reset to default: %.1f pt"
